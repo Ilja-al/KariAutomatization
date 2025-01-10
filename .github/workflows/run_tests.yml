@@ -29,4 +29,4 @@ on:
         run: pip install -r requirements.txt
       - name: test_autorization
         if: "github.event.inputs.deployment_target == 'test_autorization'"
-        run: pytest
+        run: pytest test\test_autorization.py
