@@ -6,7 +6,7 @@ on:
       deployment_target:
         description: Choose target
         required: true
-        default:
+        default: test_autorization
         type: choice
         options:
           - test_autorization
