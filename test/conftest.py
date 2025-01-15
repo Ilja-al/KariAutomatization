@@ -8,5 +8,6 @@ def browser():
     #options.add_argument('--headless') # опция для запуска в безголовом режиме
     browser = webdriver.Chrome()#(options=options) # открываем Chrome
     browser.maximize_window() # открываем на полную
-    browser.implicitly_wait(5) # неявное ожидание 5 секунд
+    #browser.implicitly_wait(5) # неявное ожидание 5 секунд
     yield browser
+    browser.quit()
