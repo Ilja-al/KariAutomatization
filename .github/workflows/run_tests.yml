@@ -28,4 +28,4 @@ jobs:
         run: pip install -r requirements.txt
       - name: test_autorization
         if: "github.event.inputs.deployment_target == 'test_autorization'"
-        run: pytest test/test_autorization.py
+        run: pytest test/test_im_reg_auth.py

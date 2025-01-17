@@ -20,7 +20,7 @@ class RegPage:
             allure.attach(str(e), name="Ошибка при открытии страницы", attachment_type=allure.attachment_type.TEXT)
             raise
 
-    def click_button_submit(self): # Кнопка применить
+    def select_country(self):  # Кнопка применить
         with allure.step('Подтвердить выбор страны'):
             try:
                 button_submit = WebDriverWait(self.browser, 10).until(
@@ -28,7 +28,11 @@ class RegPage:
                 )
                 button_submit.click()
             except TimeoutException:
-                print("Ошибка: Кнопка 'Применить' не стала кликабельной за 10 секунд.")
+                allure.attach("Ошибка: Кнопка 'Применить' не стала кликабельной за 10 секунд.",
+                              name="TimeoutException",
+                              attachment_type=allure.attachment_type.TEXT)
+                # Явно выбрасываем исключение, чтобы тест завершился как FAILED
+                raise TimeoutException("Кнопка 'Применить' не стала кликабельной за 10 секунд.")
 
 
     def reg_check(self):

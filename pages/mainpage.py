@@ -14,25 +14,19 @@ class MainPage:
         with allure.step('Открыть сайт'):
             self.browser.get('https://test-not-prod.kari.com/')
 
-
-    def close_modal(self):
-        with allure.step('Закрытие модалки выбора страны'):
-            try:
-                close_modal = self.browser.find_element((By.XPATH, '//div[@class="css-1bfagdg"]'))
-                ActionChains(self.browser).move_to_element(close_modal).click().perform()
-            except TimeoutException:
-                print("Ошибка при закрытии модального окна")
-
-
-    def click_button_submit(self): # Кнопка применить
+    def select_country(self):  # Кнопка применить
         with allure.step('Подтвердить выбор страны'):
             try:
-                button_submit = WebDriverWait(self.browser, 5).until(
+                button_submit = WebDriverWait(self.browser, 10).until(
                     EC.element_to_be_clickable((By.XPATH, '//button[text()="Применить"]'))
                 )
                 button_submit.click()
             except TimeoutException:
-                print("Ошибка: Кнопка 'Применить' не стала кликабельной за 10 секунд.")
+                allure.attach("Ошибка: Кнопка 'Применить' не стала кликабельной за 10 секунд.",
+                              name="TimeoutException",
+                              attachment_type=allure.attachment_type.TEXT)
+                # Явно выбрасываем исключение, чтобы тест завершился как FAILED
+                raise TimeoutException("Кнопка 'Применить' не стала кликабельной за 10 секунд.")
 
 
     def click_login_icon(self): # Иконка входа
