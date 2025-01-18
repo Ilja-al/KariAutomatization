@@ -97,6 +97,8 @@ def test_ya_vk_displayed(browser):
     auth_page.open_auth_page()
     auth_page.select_country()
 
+@allure.feature('Authorization')
+
 
 
 
