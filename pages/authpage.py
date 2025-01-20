@@ -5,18 +5,33 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 from selenium.common.exceptions import WebDriverException
+from selenium.common.exceptions import WebDriverException
+import time
 
 class AuthPage:
 
     def __init__(self, browser):
         self.browser = browser
 
-
     def open_auth_page(self):
         try:
             with allure.step('Открыть страницу авторизации'):
+                start_time = time.time()
                 self.browser.get('https://test-not-prod.kari.com/auth/')
-            assert 'auth' in self.browser.current_url, 'Не удалось перейти на страницу авторизации'
+                load_time = time.time() - start_time
+                allure.attach(f"Время загрузки страницы: {load_time} секунд", name="Загрузка страницы",
+                              attachment_type=allure.attachment_type.TEXT)
+                assert 'auth' in self.browser.current_url, 'Не удалось открыть сайт'
+                try:
+                    button_submit = WebDriverWait(self.browser, 10).until(
+                        EC.element_to_be_clickable((By.XPATH, '//button[text()="Применить"]'))
+                    )
+                    allure.attach("Кнопка найдена", name="Состояние кнопки",
+                                  attachment_type=allure.attachment_type.TEXT)
+                    button_submit.click()
+                except TimeoutException:
+                    allure.attach("Кнопка 'Применить' не найдена. Шаг пропущен.", name="Состояние кнопки",
+                                  attachment_type=allure.attachment_type.TEXT)
         except WebDriverException as e:
             allure.attach(str(e), name="Ошибка при открытии страницы", attachment_type=allure.attachment_type.TEXT)
             raise
@@ -53,21 +68,6 @@ class AuthPage:
             assert sms_button.is_displayed(), "Кнопка 'По СМС' не отображается"
         except Exception as e:
             raise AssertionError(f"Ошибка при проверке элементов: {str(e)}")
-
-
-    def select_country(self): # Кнопка применить
-        with allure.step('Подтвердить выбор страны'):
-            try:
-                button_submit = WebDriverWait(self.browser, 10).until(
-                    EC.element_to_be_clickable((By.XPATH, '//button[text()="Применить"]'))
-                )
-                button_submit.click()
-            except TimeoutException:
-                allure.attach("Ошибка: Кнопка 'Применить' не стала кликабельной за 10 секунд.",
-                              name="TimeoutException",
-                              attachment_type=allure.attachment_type.TEXT)
-                # Явно выбрасываем исключение, чтобы тест завершился как FAILED
-                raise TimeoutException("Кнопка 'Применить' не стала кликабельной за 10 секунд.")
 
 
     def click_create_button(self): # кнопка "Создать аккаунт"

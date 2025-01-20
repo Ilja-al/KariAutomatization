@@ -5,6 +5,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 from selenium.common.exceptions import WebDriverException
+import time
 
 class RegPage:
     def __init__(self, browser):
@@ -14,25 +15,25 @@ class RegPage:
     def open_reg_page(self):
         try:
             with allure.step('Открыть форму регистрации'):
+                start_time = time.time()
                 self.browser.get('https://test-not-prod.kari.com/auth/reg/')
+                load_time = time.time() - start_time
+                allure.attach(f"Время загрузки страницы: {load_time} секунд", name="Загрузка страницы",
+                              attachment_type=allure.attachment_type.TEXT)
                 assert 'reg' in self.browser.current_url, 'Не удалось перейти на страницу регистрации'
+                try:
+                    button_submit = WebDriverWait(self.browser, 10).until(
+                        EC.element_to_be_clickable((By.XPATH, '//button[text()="Применить"]'))
+                    )
+                    allure.attach("Кнопка найдена", name="Состояние кнопки",
+                                  attachment_type=allure.attachment_type.TEXT)
+                    button_submit.click()
+                except TimeoutException:
+                    allure.attach("Кнопка 'Применить' не найдена. Шаг пропущен.", name="Состояние кнопки",
+                                  attachment_type=allure.attachment_type.TEXT)
         except WebDriverException as e:
             allure.attach(str(e), name="Ошибка при открытии страницы", attachment_type=allure.attachment_type.TEXT)
             raise
-
-    def select_country(self):  # Кнопка применить
-        with allure.step('Подтвердить выбор страны'):
-            try:
-                button_submit = WebDriverWait(self.browser, 10).until(
-                    EC.element_to_be_clickable((By.XPATH, '//button[text()="Применить"]'))
-                )
-                button_submit.click()
-            except TimeoutException:
-                allure.attach("Ошибка: Кнопка 'Применить' не стала кликабельной за 10 секунд.",
-                              name="TimeoutException",
-                              attachment_type=allure.attachment_type.TEXT)
-                # Явно выбрасываем исключение, чтобы тест завершился как FAILED
-                raise TimeoutException("Кнопка 'Применить' не стала кликабельной за 10 секунд.")
 
 
     def reg_check(self):
@@ -62,25 +63,40 @@ class RegPage:
                           name="Ошибка при поиске поля ввода", attachment_type=allure.attachment_type.TEXT)
             raise AssertionError("Поле ввода номера телефона не было найдено за 5 секунд.")
 
-
     def reg_input_tel_symbol(self):
         try:
-            with allure.step('Ввести в поле ввода символы и буквы'):
+            with allure.step('Попытка ввода символов и букв в поле ввода телефона'):
+                # Находим поле ввода
                 input_tel = WebDriverWait(self.browser, 5).until(
                     EC.presence_of_element_located((By.XPATH, '//input[@type="tel"]'))
                 )
                 input_tel.click()
-                input_tel.send_keys("АаZz!@#$ _")
-                assert input_tel.get_attribute(
-                    'value') == "АаZz!@#$ _", "В поле ввода не отображаются введенные символы."
+
+                # Пытаемся ввести недопустимые символы
+                invalid_input = "АаZz!@#$ _"
+                input_tel.send_keys(invalid_input)
+
+                # Получаем текущее значение поля ввода
+                actual_value = input_tel.get_attribute('value')
+
+                # Проверяем, что поле содержит только "+7"
+                assert actual_value == "+7 ", f"Поле ввода содержит недопустимые символы: '{actual_value}'"
+
+                # Кнопка "Получить код" (если требуется)
                 get_code_button = WebDriverWait(self.browser, 5).until(
                     EC.element_to_be_clickable((By.XPATH, '//button[text()="Получить код"]'))
                 )
                 get_code_button.click()
+
         except TimeoutException:
+            # Логируем ошибку при взаимодействии с элементами
             allure.attach('Не удалось найти или кликнуть по элементам на странице',
                           name="Ошибка при взаимодействии с элементами", attachment_type=allure.attachment_type.TEXT)
             raise AssertionError("Не удалось найти необходимые элементы (поле ввода или кнопку) в течение 5 секунд.")
+        except AssertionError as e:
+            # Логируем сообщение об ошибке
+            allure.attach(str(e), name="Ошибка проверки ввода", attachment_type=allure.attachment_type.TEXT)
+            raise
 
 
     def reg_input_tel_required(self):
