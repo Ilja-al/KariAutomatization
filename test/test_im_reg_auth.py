@@ -4,8 +4,9 @@ from pages.regpage import RegPage
 import allure
 import pytest
 
-@allure.feature('Registration. Go to the form new account data')
-@allure.story('Click button "Create acc"')
+@allure.feature('ИМ - Регистрация/авторизация')
+@allure.story('Регистрация. Переход к форме заполнения данных нового аккаунта')
+@allure.title('Нажать кнопку "Создать аккаунт"')
 def test_reg_form_check(browser):
     main_page = MainPage(browser)
     main_page.open_main_page()
@@ -16,15 +17,16 @@ def test_reg_form_check(browser):
     main_page_auth_reg = RegPage(browser)
     assert main_page_auth_reg.reg_check().is_displayed()
 
-@allure.feature('Registration. Go to the form new account data')
-@allure.story('Click button "Create acc"')
+@allure.feature('ИМ - Регистрация/авторизация')
+@allure.story('Регистрация. Переход к форме заполнения данных нового аккаунта"')
 def test_reg_form_input_tel(browser):
     auth_reg = RegPage(browser)
     auth_reg.open_reg_page()
     assert auth_reg.reg_input_tel().is_displayed()
 
-@allure.feature('Registration. Go to the form new account data')
-@allure.story('Click button "Create acc"')
+@allure.feature('ИМ - Регистрация/авторизация')
+@allure.story('Регистрация. Переход к форме заполнения данных нового аккаунта')
+@allure.title('Ввести в поле ввода номера символы и буквы')
 def test_reg_form_input_tel_symbol(browser):
     auth_reg = RegPage(browser)
     auth_reg.open_reg_page()
