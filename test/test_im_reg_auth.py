@@ -99,6 +99,17 @@ def test_ya_vk_displayed(browser):
     auth_page.open_auth_page()
 
 
+def test_password_recovery(browser):
+    auth_page = AuthPage(browser)
+    auth_page.open_auth_page()
+    auth_page.press_forgot_pass()
+    auth_page.input_reg_tel()
+
+
+
+
+
+
 
 
 
