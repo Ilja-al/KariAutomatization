@@ -11,6 +11,33 @@ class RegPage:
     def __init__(self, browser):
         self.browser = browser
 
+    # Метод для ожидания наличия элемента (работает с CSS и XPath)
+    def wait_for_element(self, locator, by=By.XPATH, timeout=10):
+        try:
+            return WebDriverWait(self.browser, timeout).until(
+                EC.presence_of_element_located((by, locator))
+            )
+        except TimeoutException as e:
+            allure.attach(str(e), name=f"Ошибка ожидания элемента: {locator}",
+                          attachment_type=allure.attachment_type.TEXT)
+            raise
+
+    # Метод для ожидания кликабельности элемента
+    def wait_for_clickable_element(self, locator, by=By.XPATH, timeout=10):
+        try:
+            return WebDriverWait(self.browser, timeout).until(
+                EC.element_to_be_clickable((by, locator))
+            )
+        except TimeoutException as e:
+            allure.attach(str(e), name=f"Ошибка ожидания кликабельного элемента: {locator}",
+                          attachment_type=allure.attachment_type.TEXT)
+            raise
+
+    # Метод для проверки видимости элемента
+    def check_element_displayed(self, locator, by=By.XPATH):
+        element = self.wait_for_element(locator, by)
+        assert element.is_displayed(), f"Элемент {locator} не отображается"
+        return element
 
     def open_reg_page(self):
         try:
@@ -22,9 +49,7 @@ class RegPage:
                               attachment_type=allure.attachment_type.TEXT)
                 assert 'reg' in self.browser.current_url, 'Не удалось перейти на страницу регистрации'
                 try:
-                    button_submit = WebDriverWait(self.browser, 10).until(
-                        EC.element_to_be_clickable((By.XPATH, '//button[text()="Применить"]'))
-                    )
+                    button_submit = self.wait_for_clickable_element(self, '//button[text()="Применить"]')
                     allure.attach("Кнопка найдена", name="Состояние кнопки",
                                   attachment_type=allure.attachment_type.TEXT)
                     button_submit.click()
@@ -39,9 +64,7 @@ class RegPage:
     def reg_check(self):
         try:
             with allure.step('Проверка открытия формы регистрации'):
-                header_element = WebDriverWait(self.browser, 5).until(
-                    EC.visibility_of_element_located((By.XPATH, '//h1'))
-                )
+                header_element = self.wait_for_element(self, '//h1')
                 assert "Регистрация" in header_element.text, f"Ожидался текст 'Регистрация', но найден: {header_element.text}"
                 return header_element
         except TimeoutException:
@@ -53,9 +76,7 @@ class RegPage:
     def reg_input_tel(self):
         try:
             with allure.step('Проверка наличия поля ввода номера'):
-                input_tel_element = WebDriverWait(self.browser, 5).until(
-                    EC.presence_of_element_located((By.XPATH, '//input[@type="tel"]'))
-                )
+                input_tel_element = self.wait_for_element(self, '//input[@type="tel"]')
                 assert input_tel_element.is_enabled(), "Поле ввода номера не доступно для ввода."
                 return input_tel_element
         except TimeoutException:
