@@ -11,33 +11,26 @@ class RegPage:
     def __init__(self, browser):
         self.browser = browser
 
-    # Метод для ожидания наличия элемента (работает с CSS и XPath)
-    def wait_for_element(self, locator, by=By.XPATH, timeout=10):
+    # Метод для добавления ошибки в Allure-отчёт
+    def attach_error(self, title, message):
+        allure.attach(message, name=title, attachment_type=allure.attachment_type.TEXT)
+
+    # Метод для ожидания наличия и видимости элемента (работает с CSS и XPath)
+    def wait_for_element(self, locator, by=By.XPATH, timeout=10, visible=True):
         try:
-            return WebDriverWait(self.browser, timeout).until(
-                EC.presence_of_element_located((by, locator))
-            )
+            condition = EC.visibility_of_element_located if visible else EC.presence_of_element_located
+            return WebDriverWait(self.browser, timeout).until(condition((by, locator)))
         except TimeoutException as e:
-            allure.attach(str(e), name=f"Ошибка ожидания элемента: {locator}",
-                          attachment_type=allure.attachment_type.TEXT)
+            self.attach_error(f"Ошибка ожидания элемента: {locator}", str(e))
             raise
 
     # Метод для ожидания кликабельности элемента
     def wait_for_clickable_element(self, locator, by=By.XPATH, timeout=10):
         try:
-            return WebDriverWait(self.browser, timeout).until(
-                EC.element_to_be_clickable((by, locator))
-            )
+            return WebDriverWait(self.browser, timeout).until(EC.element_to_be_clickable((by, locator)))
         except TimeoutException as e:
-            allure.attach(str(e), name=f"Ошибка ожидания кликабельного элемента: {locator}",
-                          attachment_type=allure.attachment_type.TEXT)
+            self.attach_error(f"Ошибка ожидания кликабельного элемента: {locator}", str(e))
             raise
-
-    # Метод для проверки видимости элемента
-    def check_element_displayed(self, locator, by=By.XPATH):
-        element = self.wait_for_element(locator, by)
-        assert element.is_displayed(), f"Элемент {locator} не отображается"
-        return element
 
     def open_reg_page(self):
         try:
@@ -45,174 +38,69 @@ class RegPage:
                 start_time = time.time()
                 self.browser.get('https://test-not-prod.kari.com/auth/reg/')
                 load_time = time.time() - start_time
-                allure.attach(f"Время загрузки страницы: {load_time} секунд", name="Загрузка страницы",
+                allure.attach(f"Время загрузки страницы: {load_time:.2f} сек", name="Загрузка страницы",
                               attachment_type=allure.attachment_type.TEXT)
                 assert 'reg' in self.browser.current_url, 'Не удалось перейти на страницу регистрации'
                 try:
-                    button_submit = self.wait_for_clickable_element(self, '//button[text()="Применить"]')
+                    button_submit = self.wait_for_clickable_element('//button[text()="Применить"]')
                     allure.attach("Кнопка найдена", name="Состояние кнопки",
-                                  attachment_type=allure.attachment_type.TEXT)
+                                attachment_type=allure.attachment_type.TEXT)
                     button_submit.click()
                 except TimeoutException:
                     allure.attach("Кнопка 'Применить' не найдена. Шаг пропущен.", name="Состояние кнопки",
                                   attachment_type=allure.attachment_type.TEXT)
         except WebDriverException as e:
-            allure.attach(str(e), name="Ошибка при открытии страницы", attachment_type=allure.attachment_type.TEXT)
+            self.attach_error("Ошибка при открытии страницы", str(e))
             raise
 
-
     def reg_check(self):
-        try:
-            with allure.step('Проверка открытия формы регистрации'):
-                header_element = self.wait_for_element(self, '//h1')
-                assert "Регистрация" in header_element.text, f"Ожидался текст 'Регистрация', но найден: {header_element.text}"
-                return header_element
-        except TimeoutException:
-            allure.attach('Элемент не был найден на странице в течение 5 секунд', name="Ошибка при поиске элемента",
-                          attachment_type=allure.attachment_type.TEXT)
-            raise AssertionError("Элемент h1 не был найден на странице за 5 секунд.")
+        header_element = self.wait_for_element('//h1')
+        assert "Регистрация" in header_element.text, f"Ожидался текст 'Регистрация', но найден: {header_element.text}"
+        return header_element
 
 
     def reg_input_tel(self):
-        try:
-            with allure.step('Проверка наличия поля ввода номера'):
-                input_tel_element = self.wait_for_element(self, '//input[@type="tel"]')
-                assert input_tel_element.is_enabled(), "Поле ввода номера не доступно для ввода."
-                return input_tel_element
-        except TimeoutException:
-            allure.attach('Поле ввода номера не было найдено на странице в течение 5 секунд',
-                          name="Ошибка при поиске поля ввода", attachment_type=allure.attachment_type.TEXT)
-            raise AssertionError("Поле ввода номера телефона не было найдено за 5 секунд.")
+        """Проверяет, что поле ввода телефона доступно."""
+        input_tel_element = self.wait_for_element('//input[@type="tel"]')
+        assert input_tel_element.is_enabled(), "Поле ввода номера недоступно."
+        return input_tel_element
 
     def reg_input_tel_symbol(self):
-        try:
-            with allure.step('Попытка ввода символов и букв в поле ввода телефона'):
-                # Находим поле ввода
-                input_tel = WebDriverWait(self.browser, 5).until(
-                    EC.presence_of_element_located((By.XPATH, '//input[@type="tel"]'))
-                )
-                input_tel.click()
-
-                # Пытаемся ввести недопустимые символы
-                invalid_input = "АаZz!@#$ _"
-                input_tel.send_keys(invalid_input)
-
-                # Получаем текущее значение поля ввода
-                actual_value = input_tel.get_attribute('value')
-
-                # Проверяем, что поле содержит только "+7"
-                assert actual_value == "+7 ", f"Поле ввода содержит недопустимые символы: '{actual_value}'"
-
-                # Кнопка "Получить код" (если требуется)
-                get_code_button = WebDriverWait(self.browser, 5).until(
-                    EC.element_to_be_clickable((By.XPATH, '//button[text()="Получить код"]'))
-                )
-                get_code_button.click()
-
-        except TimeoutException:
-            # Логируем ошибку при взаимодействии с элементами
-            allure.attach('Не удалось найти или кликнуть по элементам на странице',
-                          name="Ошибка при взаимодействии с элементами", attachment_type=allure.attachment_type.TEXT)
-            raise AssertionError("Не удалось найти необходимые элементы (поле ввода или кнопку) в течение 5 секунд.")
-        except AssertionError as e:
-            # Логируем сообщение об ошибке
-            allure.attach(str(e), name="Ошибка проверки ввода", attachment_type=allure.attachment_type.TEXT)
-            raise
-
+        """Проверяет, что поле ввода телефона не принимает символы и буквы."""
+        input_tel = self.reg_input_tel()
+        invalid_input = "АаZz!@#$ _"
+        input_tel.send_keys(invalid_input)
+        actual_value = input_tel.get_attribute('value')
+        assert actual_value == "+7 ", f"Поле ввода содержит недопустимые символы: '{actual_value}'"
+        self.wait_for_clickable_element('//button[text()="Получить код"]').click()
 
     def reg_input_tel_required(self):
-        try:
-            with allure.step('Проверка отсутствия символов и обязательности заполнения'):
-                required_message = WebDriverWait(self.browser, 5).until(
-                    EC.visibility_of_element_located((By.XPATH, '//p[text()="Обязательное поле"]'))
-                )
-                return required_message
-        except TimeoutException:
-            allure.attach('Сообщение "Обязательное поле" не появилось на странице в течение 5 секунд',
-                          name="Ошибка при поиске сообщения", attachment_type=allure.attachment_type.TEXT)
-            raise AssertionError('Сообщение "Обязательное поле" не появилось на странице за 5 секунд.')
-
+        """Проверяет появление сообщения 'Обязательное поле'."""
+        return self.wait_for_element('//p[text()="Обязательное поле"]')
 
     def reg_input_tel_symbol_limit(self):
-        try:
-            with allure.step('Ввести не полный номер'):
-                input_tel = WebDriverWait(self.browser, 5).until(
-                    EC.visibility_of_element_located((By.XPATH, '//input[@type="tel"]'))
-                )
-                input_tel.click()
-                input_tel.send_keys("123456789")
-                get_code_button = WebDriverWait(self.browser, 5).until(
-                    EC.element_to_be_clickable((By.XPATH, '//button[text()="Получить код"]'))
-                )
-                get_code_button.click()
-        except TimeoutException:
-            allure.attach('Не удалось найти или кликнуть по элементам на странице в течение 5 секунд',
-                          name="Ошибка при взаимодействии с элементами", attachment_type=allure.attachment_type.TEXT)
-            raise AssertionError(
-                "Не удалось найти или кликнуть по элементам (поле ввода или кнопка) в течение 5 секунд.")
-
+        """Вводит 9 цифр вместо полного номера телефона."""
+        input_tel = self.reg_input_tel()
+        input_tel.send_keys("123456789")
+        self.wait_for_clickable_element('//button[text()="Получить код"]').click()
 
     def reg_input_tel_part_empty(self):
-        try:
-            with allure.step('Проверка кол-ва символов'):
-                message_element = WebDriverWait(self.browser, 5).until(
-                    EC.visibility_of_element_located((By.XPATH, '//p[text()="Введите оставшиеся цифры"]'))
-                )
-                assert message_element.text == "Введите оставшиеся цифры", "Сообщение на странице не совпадает с ожидаемым текстом."
-                return message_element
-        except TimeoutException:
-            allure.attach('Сообщение "Введите оставшиеся цифры" не появилось на странице в течение 5 секунд',
-                          name="Ошибка при поиске сообщения", attachment_type=allure.attachment_type.TEXT)
-            raise AssertionError('Сообщение "Введите оставшиеся цифры" не появилось на странице за 5 секунд.')
-
+        """Проверяет, что появляется сообщение 'Введите оставшиеся цифры'."""
+        message_element = self.wait_for_element('//p[text()="Введите оставшиеся цифры"]')
+        assert message_element.text == "Введите оставшиеся цифры", "Сообщение не совпадает с ожидаемым."
+        return message_element
 
     def generate_random_phone(self):
-        # Генерация номера телефона в формате +7 (9XX) XXX-XX-XX
-        return f"({random.randint(900, 999)}) {random.randint(100, 999)}-{random.randint(10, 99)}-{random.randint(10, 99)}"
-
+        """Генерирует номер телефона в формате 9XXXXXXXXX."""
+        return f"{random.randint(9000000000, 9999999999)}"
 
     def input_unregistered_tel(self):
-        try:
-            with allure.step('Ввод незарегистрированного номера'):
-                # Генерация случайного номера телефона
-                random_phone = self.generate_random_phone()
-                input_tel = WebDriverWait(self.browser, 5).until(
-                    EC.visibility_of_element_located((By.XPATH, '//input[@type="tel"]'))
-                )
-                input_tel.click()
-                input_tel.send_keys(random_phone)
-                get_code_button = WebDriverWait(self.browser, 5).until(
-                    EC.element_to_be_clickable((By.XPATH, '//button[text()="Получить код"]'))
-                )
-                get_code_button.click()
-        except TimeoutException as e:
-            allure.attach(str(e), name="Ошибка при поиске элемента", attachment_type=allure.attachment_type.TEXT)
-            raise AssertionError("Не удалось найти элементы на странице в течение 5 секунд.")
-
+        random_phone = self.generate_random_phone()
+        input_tel = self.reg_input_tel()
+        input_tel.send_keys(random_phone)
+        self.wait_for_clickable_element('//button[text()="Получить код"]').click()
 
     def find_captcha(self):
-        try:
-            with allure.step('Проверка открытия окна для ввода капчи'):
-                captcha_element = WebDriverWait(self.browser, 5).until(
-                EC.visibility_of_element_located((By.XPATH, '//h3[text()="А вы точно не робот?"]'))
-            )
-            assert captcha_element.text == "А вы точно не робот?", "Неверный текст в окне капчи."
-            return captcha_element
-        except TimeoutException as e:
-            allure.attach(str(e), name="Ошибка при поиске капчи", attachment_type=allure.attachment_type.TEXT)
-            raise AssertionError("Окно для ввода капчи не было найдено в течение 10 секунд.")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        captcha_element = self.wait_for_element('//h3[text()="А вы точно не робот?"]')
+        assert captcha_element.text == "А вы точно не робот?", "Неверный текст в окне капчи."
+        return captcha_element
