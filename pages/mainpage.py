@@ -39,7 +39,6 @@ class MainPage:
         assert element.is_displayed(), f"Элемент {locator} не отображается"
         return element
 
-
     def open_main_page(self):
         try:
             with allure.step('Открыть Открыть сайт'):
@@ -49,9 +48,8 @@ class MainPage:
                 allure.attach(f"Время загрузки страницы: {load_time} секунд", name="Загрузка страницы",
                               attachment_type=allure.attachment_type.TEXT)
                 assert 'https://test-not-prod.kari.com/' in self.browser.current_url, 'Не удалось открыть сайт'
-
                 try:
-                    button_submit =  self.wait_for_clickable_element(self, '//button[text()="Применить"]')
+                    button_submit = self.wait_for_clickable_element('//button[text()="Применить"]')
                     allure.attach("Кнопка найдена", name="Состояние кнопки",
                                   attachment_type=allure.attachment_type.TEXT)
                     button_submit.click()
@@ -59,14 +57,13 @@ class MainPage:
                     allure.attach("Кнопка 'Применить' не найдена. Шаг пропущен.", name="Состояние кнопки",
                                   attachment_type=allure.attachment_type.TEXT)
         except WebDriverException as e:
-                allure.attach(str(e), name="Ошибка при открытии страницы",
-                            attachment_type=allure.attachment_type.TEXT)
-                raise
+            allure.attach(str(e), name="Ошибка при открытии страницы", attachment_type=allure.attachment_type.TEXT)
+            raise
 
     def click_login_icon(self): # Иконка входа
         with allure.step('Нажать иконку входа'):
             try:
-                login_icon = self.wait_for_clickable_element(self, '//button[@class="css-1svjifm e2cllgv3"]')
+                login_icon = self.wait_for_clickable_element('//button[@class="css-1svjifm e2cllgv3"]')
                 login_icon.click()
             except TimeoutException:
                 print("Ошибка: Иконка входа не стала кликабельной за 10 секунд.")
@@ -74,7 +71,7 @@ class MainPage:
     def click_enter_registration(self): # войти или зарегистрироваться
         with allure.step('Нажать "Войти или зарегистрироваться"'):
             try:
-                enter_registration = self.wait_for_clickable_element(self, '//a[@class="css-oc613h e1bfq77c24"]')
+                enter_registration = self.wait_for_clickable_element('//a[@class="css-oc613h e1bfq77c24"]')
                 enter_registration.click()
             except TimeoutException:
                 print("Ошибка: Ссылка 'Войти или зарегистрироваться' не стала кликабельной за 10 секунд.")

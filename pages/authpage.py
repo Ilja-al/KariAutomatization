@@ -49,7 +49,7 @@ class AuthPage:
                               attachment_type=allure.attachment_type.TEXT)
                 assert 'auth' in self.browser.current_url, 'Не удалось открыть сайт'
                 try:
-                    button_submit = AuthPage.wait_for_clickable_element(self, '//button[text()="Применить"]' )
+                    button_submit = self.wait_for_clickable_element('//button[text()="Применить"]')
                     allure.attach("Кнопка найдена", name="Состояние кнопки",
                                   attachment_type=allure.attachment_type.TEXT)
                     button_submit.click()
@@ -69,12 +69,10 @@ class AuthPage:
         self.check_element_displayed('//a[@href="/" and @class="css-12bp68v"]', By.XPATH)
         self.check_element_displayed('//p[text()="По СМС"]', By.XPATH)
 
-
     def click_create_button(self):
         with allure.step('Нажать "Создать аккаунт"'):
             create_button = self.wait_for_clickable_element('//a[text()="Создать аккаунт"]', By.XPATH)
             create_button.click()
-
 
     def valid_login_field(self, email, expected_error=None):
         email_field = self.wait_for_element('//input[@name="login"]', By.XPATH)
@@ -82,7 +80,6 @@ class AuthPage:
         email_field.send_keys(email)
         login_button = self.wait_for_clickable_element('//button[@type="submit"]//span[text()="Войти"]', By.XPATH)
         login_button.click()
-
         if expected_error:
             error_message_element = self.wait_for_element(f"//p[contains(text(), '{expected_error}')]", By.XPATH)
             assert error_message_element.is_displayed(), f"Ошибка: Ожидалось сообщение '{expected_error}', но оно не отображается для {email}"
@@ -96,7 +93,6 @@ class AuthPage:
                 # Ошибка не появилась — тест прошел успешно
                 pass
 
-
     def check_auth_check(self, login, password, error=None):
         self.check_element_displayed('//input[@name="login"]', By.XPATH).send_keys(login)
         self.check_element_displayed('//input[@name="password"]', By.XPATH).send_keys(password)
@@ -109,7 +105,6 @@ class AuthPage:
             login_success = self.wait_for_element('//p[contains(text(), "Илья")]', By.XPATH)
             assert login_success.is_displayed(), "Ошибка: Успешная авторизация не была подтверждена"
 
-
     def switch_between_login_methods(self):
         self.wait_for_element('//p[text()="По СМС"]', By.XPATH).click()
         WebDriverWait(self.browser, 10).until(lambda driver: 'sms' in driver.current_url)
@@ -119,7 +114,6 @@ class AuthPage:
         self.check_element_displayed('//button[text()="Получить код"]', By.XPATH)
         self.wait_for_element('//p[text()="Войти по номеру телефона или e-mail"]', By.XPATH).click()
         WebDriverWait(self.browser, 10).until(lambda driver: 'auth' in driver.current_url)
-
 
     def ya_vk_displayed(self):
         self.check_element_displayed('//div[@class="yaPersonalButtonLogo yaPersonalButtonLogo_ya"]', By.XPATH)

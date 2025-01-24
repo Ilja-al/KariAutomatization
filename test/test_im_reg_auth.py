@@ -4,6 +4,7 @@ from pages.regpage import RegPage
 import allure
 import pytest
 
+
 @allure.feature('ИМ - Регистрация/авторизация')
 @allure.story('Регистрация. Переход к форме заполнения данных нового аккаунта')
 @allure.title('Нажать кнопку "Создать аккаунт"')
@@ -17,6 +18,7 @@ def test_reg_form_check(browser):
     main_page_auth_reg = RegPage(browser)
     assert main_page_auth_reg.reg_check().is_displayed()
 
+
 @allure.feature('ИМ - Регистрация/авторизация')
 @allure.story('Регистрация. Переход к форме заполнения данных нового аккаунта')
 @allure.title('Ввести в поле ввода номера символы и буквы')
@@ -25,6 +27,7 @@ def test_reg_form_input_tel_symbol(browser):
     auth_reg.open_reg_page()
     auth_reg.reg_input_tel_symbol()
     assert auth_reg.reg_input_tel_required().is_displayed()
+
 
 @allure.feature('ИМ - Регистрация/авторизация')
 @allure.story('Регистрация. Переход к форме заполнения данных нового аккаунта')
@@ -35,6 +38,7 @@ def test_reg_from_input_tel_symbol_limit(browser):
     auth_reg.reg_input_tel_symbol_limit()
     assert auth_reg.reg_input_tel_part_empty().is_displayed()
 
+
 @allure.feature('ИМ - Регистрация/авторизация')
 @allure.story('Регистрация. Переход к форме заполнения данных нового аккаунта')
 @allure.title('Ввести номер телефона незарегестрированного пользователя и нажать кнопку "Получить код"')
@@ -44,13 +48,16 @@ def test_input_unregistered_tel(browser):
     auth_reg.input_unregistered_tel()
     assert auth_reg.find_captcha().is_displayed()
 
+
 @allure.feature('ИМ - Регистрация/авторизация')
 @allure.story('Регистрация. Переход к форме заполнения данных нового аккаунта"')
 @allure.title('Ввести номер телефона зарегестрированного пользователя и нажать кнопку "Получить код"')
 def test_reg_form_input_tel(browser):
     auth_reg = RegPage(browser)
     auth_reg.open_reg_page()
+    auth_reg.reg_input_tel()
     assert auth_reg.reg_input_tel().is_displayed()
+
 
 @allure.feature('ИМ - Регистрация/авторизация')
 @allure.story('Авторизация. Валидация поля Телефон/E-mail')
@@ -91,6 +98,7 @@ def test_switch_between_login_methods(browser):
     auth_page.open_auth_page()
     auth_page.switch_between_login_methods()
 
+
 @allure.feature('ИМ - Регистрация/авторизация')
 @allure.story('Yandex и ВК ID. Отображение кнопок входа')
 @allure.title('Yandex и ВК ID. Отображение кнопок входа')
@@ -104,36 +112,3 @@ def test_password_recovery(browser):
     auth_page.open_auth_page()
     auth_page.press_forgot_pass()
     auth_page.input_reg_tel()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
