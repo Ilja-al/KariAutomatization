@@ -8,6 +8,7 @@ from selenium.common.exceptions import WebDriverException
 import time
 
 class RegPage:
+
     def __init__(self, browser):
         self.browser = browser
 
@@ -57,7 +58,6 @@ class RegPage:
         header_element = self.wait_for_element('//h1')
         assert "Регистрация" in header_element.text, f"Ожидался текст 'Регистрация', но найден: {header_element.text}"
         return header_element
-
 
     def reg_input_tel(self):
         """Проверяет, что поле ввода телефона доступно."""
