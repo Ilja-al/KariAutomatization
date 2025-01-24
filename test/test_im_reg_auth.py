@@ -107,8 +107,22 @@ def test_ya_vk_displayed(browser):
     auth_page.open_auth_page()
 
 
-def test_password_recovery(browser):
+@allure.feature('ИМ - Регистрация/авторизация')
+@allure.story('Восстановление пароля пользователя')
+@allure.title('Восстановление пароля пользователя')
+def test_password_recovery(browser,code):
     auth_page = AuthPage(browser)
     auth_page.open_auth_page()
     auth_page.press_forgot_pass()
     auth_page.input_reg_tel()
+    auth_page.get_confirm_codes()
+    auth_page.input_confirm_code(code)
+    auth_page.change_password()
+
+
+@allure.feature('ИМ - Регистрация/авторизация')
+@allure.story('Проверка входа по восстановленному паролю')
+@allure.title('Проверка входа по восстановленному паролю')
+def test_password_recovery(browser):
+    auth_page = AuthPage(browser)
+    auth_page.open_auth_page()

@@ -5,6 +5,11 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 from selenium.common.exceptions import WebDriverException
 import time
+from pymongo import MongoClient
+import string
+import random
+
+URL = 'https://test-not-prod.kari.com/auth/recovery/'
 
 class AuthPage:
 
@@ -137,3 +142,50 @@ class AuthPage:
         except TimeoutException:
             pass
         self.wait_for_element('button.css-10vxmgq', By.CSS_SELECTOR).click()
+
+    def get_confirm_codes(phone_number: str):
+        try:
+            client = MongoClient('mongodb://localhost:27017/')  # Указать адрес монги
+            db = client['clients']  # Выбор базы данных и коллекции
+            collection = db['confirmcodes']
+            query = {'phone': phone_number} # Выполнение запроса
+            results = collection.find(query, {'_id': 0, 'code': 1})
+            # Преобразование результатов в список
+            codes = [item['code'] for item in results] # Преобразование результатов в список
+            client.close() # Закрытие соединения
+            return codes
+        except Exception as e:
+            print(f"Ошибка при подключении к MongoDB: {e}")
+            return None
+
+    def input_confirm_code(self, code):
+        for i, digit in enumerate(code):
+            confirm_code_field = self.wait_for_element(f"349c753b-844e-4448-a443-6edf45dee507-{i}","id")
+            confirm_code_field.send_keys(digit)
+        assert self.check_element_displayed('h1.css-gebv7e',By.CSS_SELECTOR,).text == "Восстановление пароля", "Форма восстановления пароля не найдена"
+        assert self.check_element_displayed('input[name="password"]',By.CSS_SELECTOR), "Поле ввода пароля не найдено"
+        assert self.check_element_displayed('input[name="confirmPassword"]',By.CSS_SELECTOR), "Поле подтверждения пароля не найдено"
+        assert self.check_element_displayed('button.css-10vxmgq',By.CSS_SELECTOR), "Кнопка 'Изменить и войти' не найдена"
+
+    def generate_password(self):
+        characters = string.ascii_letters + string.digits
+        while True:
+            password = ''.join(random.choices(characters, k=8))
+            if (any(c.isdigit() for c in password) and
+                    any(c.isupper() for c in password)):
+                return password
+
+    def change_password(self):
+        new_password = self.generate_password()
+        password_field = self.wait_for_element('input[name="password"]',By.CSS_SELECTOR)
+        password_field.send_keys(new_password)
+        confirm_password_field = self.wait_for_element('input[name="confirmPassword"]',By.CSS_SELECTOR)
+        confirm_password_field.send_keys(new_password)
+        error_messages = self.browser.find_elements(By.CSS_SELECTOR, 'p.css-1iccibi[color="error"]')
+        assert not error_messages, "Ошибка: обнаружены сообщения о ненадежном пароле"
+        submit_button = self.wait_for_element('button.css-10vxmgq',By.CSS_SELECTOR)
+        submit_button.click()
+        login_success = self.wait_for_element('//p[contains(text(), "Илья")]', By.XPATH)
+        assert login_success.is_displayed(), "Ошибка: Успешная авторизация не была подтверждена"
+
+
