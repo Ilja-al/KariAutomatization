@@ -4,8 +4,7 @@ import random
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
-from selenium.common.exceptions import WebDriverException
-import time
+
 
 class RegPage:
 
@@ -34,73 +33,49 @@ class RegPage:
             raise
 
     def open_reg_page(self):
-        try:
-            with allure.step('Открыть форму регистрации'):
-                start_time = time.time()
-                self.browser.get('https://test-not-prod.kari.com/auth/reg/')
-                load_time = time.time() - start_time
-                allure.attach(f"Время загрузки страницы: {load_time:.2f} сек", name="Загрузка страницы",
-                              attachment_type=allure.attachment_type.TEXT)
-                assert 'reg' in self.browser.current_url, 'Не удалось перейти на страницу регистрации'
-                try:
-                    button_submit = self.wait_for_clickable_element('//button[text()="Применить"]')
-                    allure.attach("Кнопка найдена", name="Состояние кнопки",
-                                attachment_type=allure.attachment_type.TEXT)
-                    button_submit.click()
-                except TimeoutException:
-                    allure.attach("Кнопка 'Применить' не найдена. Шаг пропущен.", name="Состояние кнопки",
-                                  attachment_type=allure.attachment_type.TEXT)
-        except WebDriverException as e:
-            self.attach_error("Ошибка при открытии страницы", str(e))
-            raise
-
-    def reg_check(self):
-        header_element = self.wait_for_element('//h1')
-        assert "Регистрация" in header_element.text, f"Ожидался текст 'Регистрация', но найден: {header_element.text}"
-        return header_element
+        with allure.step('Открыть страницу регистрации'):
+            self.browser.get('https://test-not-prod.kari.com/auth/reg/')
+            assert 'reg' in self.browser.current_url, 'Не удалось перейти на страницу регистрации'
+            button_submit = self.wait_for_clickable_element('//button[text()="Применить"]')
+            button_submit.click()
 
     def reg_input_tel(self):
-        """Проверяет, что поле ввода телефона доступно."""
-        input_tel_element = self.wait_for_element('//input[@type="tel"]')
-        assert input_tel_element.is_enabled(), "Поле ввода номера недоступно."
-        return input_tel_element
+        """Ввод зарегистрированного номера телефона"""
+        with allure.step('Ввести зарегистрированный номер'):
+            input_tel_element = self.wait_for_element('//input[@type="tel"]')
+            input_tel_element.send_keys('9022779866')
+        with allure.step('Нажать "Получить код"'):
+            self.wait_for_clickable_element('//button[text()="Получить код"]').click()
 
-    def reg_input_tel_symbol(self):
-        """Проверяет, что поле ввода телефона не принимает символы и буквы."""
-        input_tel = self.reg_input_tel()
-        invalid_input = "АаZz!@#$ _"
-        input_tel.send_keys(invalid_input)
-        actual_value = input_tel.get_attribute('value')
-        assert actual_value == "+7 ", f"Поле ввода содержит недопустимые символы: '{actual_value}'"
-        self.wait_for_clickable_element('//button[text()="Получить код"]').click()
-
-    def reg_input_tel_required(self):
-        """Проверяет появление сообщения 'Обязательное поле'."""
-        return self.wait_for_element('//p[text()="Обязательное поле"]')
-
-    def reg_input_tel_symbol_limit(self):
-        """Вводит 9 цифр вместо полного номера телефона."""
-        input_tel = self.reg_input_tel()
-        input_tel.send_keys("123456789")
-        self.wait_for_clickable_element('//button[text()="Получить код"]').click()
-
-    def reg_input_tel_part_empty(self):
-        """Проверяет, что появляется сообщение 'Введите оставшиеся цифры'."""
-        message_element = self.wait_for_element('//p[text()="Введите оставшиеся цифры"]')
-        assert message_element.text == "Введите оставшиеся цифры", "Сообщение не совпадает с ожидаемым."
-        return message_element
+    def reg_input_tel_validation(self, phone, error=None):
+        """Проверка наличия валидации поля ввода номера телефона"""
+        with allure.step('Проверка наличия поля ввода номера телефона'):
+            phone_filed = self.wait_for_element('//input[@name="phone"]', By.XPATH)
+        with allure.step('Очистка поля ввода номера телефона'):
+            phone_filed.clear()
+        with allure.step('Заполнить поле (значения указаны в параметризации)'):
+            phone_filed.send_keys(phone)
+        with allure.step('Нажать "Получить код"'):
+            self.wait_for_clickable_element('//button[text()="Получить код"]', By.XPATH).click()
+        with allure.step('Проверка наличия ошибки валидации'):
+            error_message_element = self.wait_for_element(f"//p[contains(text(), '{error}')]", By.XPATH)
+            assert error_message_element.is_displayed(), f"Ошибка: Ожидалось сообщение '{error}', но оно не отображается для {phone}"
 
     def generate_random_phone(self):
         """Генерирует номер телефона в формате 9XXXXXXXXX."""
         return f"{random.randint(9000000000, 9999999999)}"
 
     def input_unregistered_tel(self):
-        random_phone = self.generate_random_phone()
-        input_tel = self.reg_input_tel()
-        input_tel.send_keys(random_phone)
-        self.wait_for_clickable_element('//button[text()="Получить код"]').click()
+        """Ввод незарегистрированного номера телефона в формате 9XXXXXXXXX."""
+        with allure.step('Ввести не зарегистрированный номер'):
+            random_phone = self.generate_random_phone()
+            input_tel_element = self.wait_for_element('//input[@type="tel"]')
+            input_tel_element.send_keys(random_phone)
+        with allure.step('Нажать "Получить код"'):
+            self.wait_for_clickable_element('//button[text()="Получить код"]').click()
 
     def find_captcha(self):
-        captcha_element = self.wait_for_element('//h3[text()="А вы точно не робот?"]')
-        assert captcha_element.text == "А вы точно не робот?", "Неверный текст в окне капчи."
-        return captcha_element
+        with allure.step('Проверка открытия капчи'):
+            captcha_element = self.wait_for_element('//h3[text()="А вы точно не робот?"]')
+            assert captcha_element.text == "А вы точно не робот?", "Неверный текст в окне капчи."
+            return captcha_element

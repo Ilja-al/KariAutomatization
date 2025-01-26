@@ -3,8 +3,6 @@ import allure
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
-from selenium.common.exceptions import WebDriverException
-import time
 
 class MainPage:
 
@@ -40,25 +38,11 @@ class MainPage:
         return element
 
     def open_main_page(self):
-        try:
-            with allure.step('Открыть Открыть сайт'):
-                start_time = time.time()
-                self.browser.get('https://test-not-prod.kari.com/')
-                load_time = time.time() - start_time
-                allure.attach(f"Время загрузки страницы: {load_time} секунд", name="Загрузка страницы",
-                              attachment_type=allure.attachment_type.TEXT)
-                assert 'https://test-not-prod.kari.com/' in self.browser.current_url, 'Не удалось открыть сайт'
-                try:
-                    button_submit = self.wait_for_clickable_element('//button[text()="Применить"]')
-                    allure.attach("Кнопка найдена", name="Состояние кнопки",
-                                  attachment_type=allure.attachment_type.TEXT)
-                    button_submit.click()
-                except TimeoutException:
-                    allure.attach("Кнопка 'Применить' не найдена. Шаг пропущен.", name="Состояние кнопки",
-                                  attachment_type=allure.attachment_type.TEXT)
-        except WebDriverException as e:
-            allure.attach(str(e), name="Ошибка при открытии страницы", attachment_type=allure.attachment_type.TEXT)
-            raise
+        with allure.step('Открыть сайт'):
+            self.browser.get('https://test-not-prod.kari.com/')
+            assert 'https://test-not-prod.kari.com/' in self.browser.current_url, 'Не удалось открыть сайт'
+            button_submit = self.wait_for_clickable_element('//button[text()="Применить"]')
+            button_submit.click()
 
     def click_login_icon(self): # Иконка входа
         with allure.step('Нажать иконку входа'):
