@@ -6,9 +6,9 @@ from selenium.webdriver.chrome.options import Options
 @pytest.fixture
 def browser():
     options = Options()
-    #options.add_argument('--headless')  # Безголовый режим
-    #options.add_argument('--disable-gpu')  # Отключение GPU
-    #options.add_argument('--no-sandbox')  # Полезно для Docker
+    options.add_argument('--headless')  # Безголовый режим
+    options.add_argument('--disable-gpu')  # Отключение GPU
+    options.add_argument('--no-sandbox')  # Полезно для Docker
     options.add_argument('--window-size=1920,1080')  # Размер окна
     options.page_load_strategy = 'none'  # Отключаем ожидание полной загрузки страницы
 
