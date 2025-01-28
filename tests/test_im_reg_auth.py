@@ -110,3 +110,4 @@ def test_password_recovery(browser, mongo_client):
     auth_page.input_reg_tel(phone_number)
     auth_page.enter_sms_code(phone_number, mongo_client)
     auth_page.change_password()
+
