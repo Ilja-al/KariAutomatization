@@ -102,11 +102,11 @@ def test_ya_vk_displayed(browser):
 
 @allure.story('7.Восстановление пароля пользователя')
 @allure.title('Восстановление пароля пользователя')
-def test_password_recovery(browser,code):
+def test_password_recovery(browser, mongo_client):
+    phone_number = "9022779866"
     auth_page = AuthPage(browser)
     auth_page.open_auth_page()
     auth_page.press_forgot_pass()
-    auth_page.input_reg_tel()
-    auth_page.get_confirm_codes()
-    auth_page.input_confirm_code(code)
+    auth_page.input_reg_tel(phone_number)
+    auth_page.enter_sms_code(phone_number, mongo_client)
     auth_page.change_password()

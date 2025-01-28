@@ -3,9 +3,12 @@ import allure
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
+from selenium.webdriver.common.keys import Keys
 from pymongo import MongoClient
 import string
 import random
+import pymongo
+import time
 
 
 URL = 'https://test-not-prod.kari.com/auth/recovery/'
@@ -42,6 +45,11 @@ class AuthPage:
         element = self.wait_for_element(locator, by)
         assert element.is_displayed(), f"Элемент {locator} не отображается"
         return element
+
+    # Метод для закрытия браузера (для стабильности и избежания утечки
+    def close_browser(self):
+        if self.browser:
+            self.browser.quit()
 
     def open_auth_page(self):
         with (allure.step('Открыть страницу авторизации')):
@@ -152,112 +160,114 @@ class AuthPage:
             # Ожидание появления iframe и переключение на него
             iframe = self.wait_for_element('//iframe[@id="iframe"]', By.XPATH)
             self.browser.switch_to.frame(iframe)
-
             # Ожидание появления кнопки Яндекса
             self.wait_for_element('//div[contains(@class, "yaPersonalButtonLogo")]', By.XPATH)
-
             # Ожидание появления кнопки ВК
             self.wait_for_element('//button[contains(@class, "css-14c1lv3")]', By.XPATH)
-
             # Возвращаемся в основной контекст страницы
             self.browser.switch_to.default_content()
 
     def press_forgot_pass(self):
-        self.wait_for_clickable_element('//a[text()="Забыли пароль?"]', By.XPATH).click()
-        WebDriverWait(self.browser, 10).until(EC.url_to_be("https://test-not-prod.kari.com/auth/recovery/"))
-        self.check_element_displayed('input[type="tel"][name="phone"]', By.CSS_SELECTOR)
-        self.check_element_displayed('//a[@href="/" and @class="css-12bp68v"]', By.XPATH)
-        self.check_element_displayed('//a[text()="Вход по паролю"]', By.XPATH)
-        self.check_element_displayed('button.css-10vxmgq', By.CSS_SELECTOR)
+        with allure.step('Нажать "Забыли пароль?"'):
+            self.wait_for_clickable_element('//a[text()="Забыли пароль?"]', By.XPATH).click()
+        with allure.step('Проверка перехода на форму и отображения элементов'):
+            WebDriverWait(self.browser, 10).until(EC.url_to_be("https://test-not-prod.kari.com/auth/recovery/?redirection="))
+            self.check_element_displayed('input[type="tel"][name="phone"]', By.CSS_SELECTOR)
+            self.check_element_displayed('//a[@href="/" and @class="css-12bp68v"]', By.XPATH)
+            self.check_element_displayed('//a[text()="Вход по паролю"]', By.XPATH)
+            self.check_element_displayed('button.css-10vxmgq', By.CSS_SELECTOR)
 
-    def input_reg_tel(self):
-        phone_input = self.wait_for_element('input[type="tel"][name="phone"]', By.CSS_SELECTOR)
-        phone_input.send_keys("9022779866")
-        try:
-            self.wait_for_element('p.css-1iccibi[color="error"]', By.CSS_SELECTOR)
-            allure.attach("Ошибка валидации: поле подсвечено красным", name="Validation Error", attachment_type=allure.attachment_type.TEXT)
-            raise AssertionError("Поле ввода телефона подсвечено красным (ошибка валидации)")
-        except TimeoutException:
-            pass
-        self.wait_for_element('button.css-10vxmgq', By.CSS_SELECTOR).click()
+    def input_reg_tel(self, phone_number):
+        with allure.step('Ввод номера телефона'):
+            phone_input = self.wait_for_element('input[type="tel"][name="phone"]', By.CSS_SELECTOR)
+            phone_input.send_keys(phone_number)
+        with allure.step('Проверка отсутствия ошибок валидации'):
+            try:
+                self.wait_for_element('p.css-1iccibi[color="error"]', By.CSS_SELECTOR)
+                allure.attach("Ошибка валидации: поле подсвечено красным", name="Validation Error", attachment_type=allure.attachment_type.TEXT)
+                raise AssertionError("Поле ввода телефона подсвечено красным (ошибка валидации)")
+            except TimeoutException:
+                pass
 
-    def get_confirm_codes(phone_number: str):
+    def enter_sms_code(self, phone_number, mongo_client):
         try:
-            client = MongoClient('mongodb://localhost:27017/')  # Указать адрес монги
-            db = client['clients']  # Выбор базы данных и коллекции
-            collection = db['confirmcodes']
-            query = {'phone': phone_number} # Выполнение запроса
-            results = collection.find(query, {'_id': 0, 'code': 1})
-            # Преобразование результатов в список
-            codes = [item['code'] for item in results] # Преобразование результатов в список
-            client.close() # Закрытие соединения
-            return codes
+            with allure.step('Нажать "Получить код"'):
+                submit_button = self.wait_for_clickable_element("//button[text()='Получить код']",By.XPATH)
+                submit_button.click()
+            # Небольшая задержка для генерации кода
+            time.sleep(2)
+            # Подключение к MongoDB через фикстуру
+            collection_name = "clients"
+            query = {"phone": f"+7{phone_number}"}
+            projection = {"oneTimePassword.confirmCode": 1, "_id": 0}
+            collection = mongo_client[collection_name]
+            result = collection.find_one(query, projection)
+            if not result or "oneTimePassword" not in result or "confirmCode" not in result["oneTimePassword"]:
+                raise ValueError("Не удалось найти код подтверждения в базе данных!")
+            confirm_code = result["oneTimePassword"]["confirmCode"]
+            with allure.step('Ввод кода подтверждения'):
+                # Ввод каждой цифры кода в соответствующий input[data-id]
+                for i, digit in enumerate(confirm_code):
+                    # Ожидание появления соответствующего input[data-id]
+                    code_input = self.wait_for_element(f"input[data-id='{i}']", By.CSS_SELECTOR)
+                    code_input.send_keys(digit)
+                print("Код подтверждения успешно введен!")
+            with allure.step('Проверка открытия формы и отображения элементов'):
+                assert self.check_element_displayed('h1.css-gebv7e', By.CSS_SELECTOR).text == "Восстановление пароля", "Форма восстановления пароля не найдена"
+                assert self.check_element_displayed('input[name="password"]', By.CSS_SELECTOR), "Поле ввода пароля не найдено"
+                assert self.check_element_displayed('input[name="confirmPassword"]', By.CSS_SELECTOR), "Поле подтверждения пароля не найдено"
+                assert self.check_element_displayed('button.css-10vxmgq', By.CSS_SELECTOR), "Кнопка 'Изменить и войти' не найдена"
+                print("Все элементы формы восстановления пароля успешно найдены!")
         except Exception as e:
-            print(f"Ошибка при подключении к MongoDB: {e}")
-            return None
+            print(f"Что то пошло не так: {e}")
 
-    def input_confirm_code(self, code):
-        for i, digit in enumerate(code):
-            confirm_code_field = self.wait_for_element(f"349c753b-844e-4448-a443-6edf45dee507-{i}","id")
-            confirm_code_field.send_keys(digit)
-        assert self.check_element_displayed('h1.css-gebv7e',By.CSS_SELECTOR,).text == "Восстановление пароля", "Форма восстановления пароля не найдена"
-        assert self.check_element_displayed('input[name="password"]',By.CSS_SELECTOR), "Поле ввода пароля не найдено"
-        assert self.check_element_displayed('input[name="confirmPassword"]',By.CSS_SELECTOR), "Поле подтверждения пароля не найдено"
-        assert self.check_element_displayed('button.css-10vxmgq',By.CSS_SELECTOR), "Кнопка 'Изменить и войти' не найдена"
-
-    def generate_password(self):
+    def generate_password(self, length=8):
         characters = string.ascii_letters + string.digits
         while True:
-            password = ''.join(random.choices(characters, k=8))
-            if (any(c.isdigit() for c in password) and
-                    any(c.isupper() for c in password)):
+            password = ''.join(random.choices(characters, k=length))
+            if (any(c.isdigit() for c in password) and any(c.isupper() for c in password)):
                 return password
 
     def change_password(self):
-        new_password = self.generate_password()
-        # Ввод нового пароля и его подтверждения
-        password_field = self.wait_for_element('input[name="password"]', By.CSS_SELECTOR)
-        password_field.clear()
-        password_field.send_keys(new_password)
-        confirm_password_field = self.wait_for_element('input[name="confirmPassword"]', By.CSS_SELECTOR)
-        confirm_password_field.clear()
-        confirm_password_field.send_keys(new_password)
-        # Проверка наличия сообщений об ошибках
-        error_messages = self.browser.find_elements(By.CSS_SELECTOR, 'p.css-1iccibi[color="error"]')
-        assert not error_messages, "Ошибка: обнаружены сообщения о ненадежном пароле"
-        # Нажатие кнопки подтверждения смены пароля
-        submit_button = self.wait_for_element('button.css-10vxmgq', By.CSS_SELECTOR)
-        submit_button.click()
-        # Проверка успешного входа
-        login_success = self.wait_for_element('//p[contains(text(), "Илья")]', By.XPATH)
-        assert login_success.is_displayed(), "Ошибка: Успешная авторизация не была подтверждена"
-        # Выход из аккаунта
-        profile_element = self.wait_for_clickable_element('p.css-jjvis4.e2cllgv0', By.CSS_SELECTOR)
-        profile_element.click()
-        logout_button = self.wait_for_clickable_element('button.e1bfq77c14.css-23bvf4', By.CSS_SELECTOR)
-        logout_button.click()
-        # Вход на страницу авторизации
-        login_icon = self.wait_for_clickable_element('//button[@class="css-1svjifm e2cllgv3"]', By.XPATH)
-        login_icon.click()
-        enter_registration = self.wait_for_clickable_element('//a[@class="css-oc613h e1bfq77c24"]', By.XPATH)
-        enter_registration.click()
-        # Ввод логина и пароля для повторного входа
-        login_field = self.check_element_displayed('//input[@name="login"]', By.XPATH)
-        login_field.clear()
-        login_field.send_keys('+79022779866')
-        password_field = self.check_element_displayed('//input[@name="password"]', By.XPATH)
-        password_field.clear()
-        password_field.send_keys(new_password)
-        login_button = self.wait_for_clickable_element('//button[@type="submit"]//span[text()="Войти"]', By.XPATH)
-        login_button.click()
-        # Повторная проверка успешного входа
-        assert login_success.is_displayed(), "Ошибка: Повторная авторизация не была подтверждена"
-
-
-
-
-
-
-
-
-
+        with allure.step('Генерация нового пароля'):
+            new_password = self.generate_password()
+        with allure.step('Ввод нового пароля'):
+            password_field = self.wait_for_element('input[name="password"]', By.CSS_SELECTOR)
+            password_field.clear()
+            password_field.send_keys(new_password)
+        with allure.step('Ввод подтверждения пароля'):
+            confirm_password_field = self.wait_for_element('input[name="confirmPassword"]', By.CSS_SELECTOR)
+            confirm_password_field.clear()
+            confirm_password_field.send_keys(new_password)
+        with allure.step('Проверка наличия сообщений об ошибках'):
+            error_messages = self.browser.find_elements(By.CSS_SELECTOR, 'p.css-1iccibi[color="error"]')
+            assert not error_messages, f"Ошибка: обнаружены сообщения о ненадежном пароле: {error_messages}"
+        with allure.step('Нажать "Изменить и войти"'):
+            submit_button = self.wait_for_element('button.css-10vxmgq', By.CSS_SELECTOR)
+            submit_button.click()
+        with allure.step('Проверка успешного входа'):
+            login_success = self.wait_for_element('//p[contains(text(), "Илья")]', By.XPATH)
+            assert login_success.is_displayed(), "Ошибка: Успешная авторизация не была подтверждена"
+        with allure.step('Выход из аккаунта'):
+            profile_element = self.wait_for_clickable_element('p.css-jjvis4.e2cllgv0', By.CSS_SELECTOR)
+            profile_element.click()
+            logout_button = self.wait_for_clickable_element('button.e1bfq77c14.css-23bvf4', By.CSS_SELECTOR)
+            logout_button.click()
+        with allure.step('Открытие формы входа'):
+            login_icon = self.wait_for_clickable_element('//button[@class="css-1svjifm e2cllgv3"]', By.XPATH)
+            login_icon.click()
+        with allure.step('Нажать войти или зарегистрироваться'):
+            enter_registration = self.wait_for_clickable_element('//a[@class="css-oc613h e1bfq77c24"]', By.XPATH)
+            enter_registration.click()
+        with allure.step('Ввод логина и измененного пароля'):
+            login_field = self.check_element_displayed('//input[@name="login"]', By.XPATH)
+            login_field.clear()
+            login_field.send_keys('+79022779866')
+            password_field = self.check_element_displayed('//input[@name="password"]', By.XPATH)
+            password_field.clear()
+            password_field.send_keys(new_password)
+        with allure.step('Нажать "Войти"'):
+            login_button = self.wait_for_clickable_element('//button[@type="submit"]//span[text()="Войти"]', By.XPATH)
+            login_button.click()
+        with allure.step('Повторная проверка успешного входа'):
+            assert login_success, "Ошибка: Повторная авторизация не была подтверждена"
