@@ -4,12 +4,11 @@ import random
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
+from base.base_page import BasePage
+from config.links import Links
 
 
-class RegPage:
-
-    def __init__(self, browser):
-        self.browser = browser
+class RegPage(BasePage):
 
     # Метод для добавления ошибки в Allure-отчёт
     def attach_error(self, title, message):
@@ -34,8 +33,9 @@ class RegPage:
 
     def open_reg_page(self):
         with allure.step('Открыть страницу регистрации'):
-            self.browser.get('https://test-not-prod.kari.com/auth/reg/')
-            assert 'reg' in self.browser.current_url, 'Не удалось перейти на страницу регистрации'
+            page_url = Links.REG_PAGE
+            self.browser.get(page_url)
+            assert page_url in self.browser.current_url, 'Не удалось перейти на страницу регистрации'
             button_submit = self.wait_for_clickable_element('//button[text()="Применить"]')
             button_submit.click()
 

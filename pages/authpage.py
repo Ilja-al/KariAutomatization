@@ -3,20 +3,13 @@ import allure
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
-from selenium.webdriver.common.keys import Keys
-from pymongo import MongoClient
 import string
 import random
-import pymongo
 import time
+from config.links import Links
+from base.base_page import BasePage
 
-
-URL = 'https://test-not-prod.kari.com/auth/recovery/'
-
-class AuthPage:
-
-    def __init__(self, browser):
-        self.browser = browser
+class AuthPage(BasePage):
 
     # Метод для ожидания наличия элемента (работает с CSS и XPath)
     def wait_for_element(self, locator, by=By.XPATH, timeout=15):
@@ -53,10 +46,11 @@ class AuthPage:
 
     def open_auth_page(self):
         with (allure.step('Открыть страницу авторизации')):
-                self.browser.get('https://test-not-prod.kari.com/auth/')
-                assert 'auth' in self.browser.current_url, 'Не удалось открыть сайт'
-                button_submit = self.wait_for_clickable_element('//button[text()="Применить"]')
-                button_submit.click()
+            page_url = Links.AUTH_PAGE
+            self.browser.get(page_url)
+            assert page_url in self.browser.current_url, 'Не удалось открыть сайт'
+            button_submit = self.wait_for_clickable_element('//button[text()="Применить"]')
+            button_submit.click()
 
     def check_auth_page_elements(self):
         with allure.step('Проверка наличия необходимых элементов на странице'):
