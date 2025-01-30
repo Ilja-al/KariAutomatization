@@ -1,0 +1,163 @@
+{
+  "uid" : "6e0eed7307d4de33",
+  "name" : "Ввод различных данных в поле логина и проверка валидации",
+  "fullName" : "tests.test_im_reg_auth.TestImAuthReg#test_auth_valid_login_field",
+  "historyId" : "0aeedb9f1fbb16765c0de8cc79a04e0b",
+  "time" : {
+    "start" : 1738267240045,
+    "stop" : 1738267240049,
+    "duration" : 4
+  },
+  "status" : "failed",
+  "statusMessage" : "AssertionError: Не удалось открыть сайт",
+  "statusTrace" : "self = <tests.test_im_reg_auth.TestImAuthReg object at 0x7f7cb1a59280>\nemail = '79022779866', expected_error = ''\n\n    @allure.story('2.Авторизация. Валидация поля Телефон/E-mail')\n    @allure.title('Ввод различных данных в поле логина и проверка валидации')\n    @pytest.mark.parametrize(\"email, expected_error\", [\n            ('tests@example.com',''),\n            ('79022779866',''),\n            ('798888', 'Некорректный номер телефона'),\n            (',./*\"(*?).', 'Введите свой телефон или e-mail'),\n            ('privet@g', 'Некорректный E-mail')\n        ])\n    def test_auth_valid_login_field(self, email, expected_error):\n>       self.auth_page.open_auth_page()\n\ntests/test_im_reg_auth.py:53: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nself = <pages.authpage.AuthPage object at 0x7f7cb1a41fa0>\n\n    def open_auth_page(self):\n        with (allure.step('Открыть страницу авторизации')):\n            page_url = Links.AUTH_PAGE\n            self.browser.get(page_url)\n>           assert page_url in self.browser.current_url, 'Не удалось открыть сайт'\nE           AssertionError: Не удалось открыть сайт\n\npages/authpage.py:51: AssertionError",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ {
+    "name" : "browser",
+    "time" : {
+      "start" : 1738267239727,
+      "stop" : 1738267240044,
+      "duration" : 317
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "stepsCount" : 0,
+    "hasContent" : false
+  }, {
+    "name" : "setup",
+    "time" : {
+      "start" : 1738267240044,
+      "stop" : 1738267240044,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "stepsCount" : 0,
+    "hasContent" : false
+  }, {
+    "name" : "set_allure_labels",
+    "time" : {
+      "start" : 1738267240044,
+      "stop" : 1738267240044,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "stepsCount" : 0,
+    "hasContent" : false
+  } ],
+  "testStage" : {
+    "status" : "failed",
+    "statusMessage" : "AssertionError: Не удалось открыть сайт",
+    "statusTrace" : "self = <tests.test_im_reg_auth.TestImAuthReg object at 0x7f7cb1a59280>\nemail = '79022779866', expected_error = ''\n\n    @allure.story('2.Авторизация. Валидация поля Телефон/E-mail')\n    @allure.title('Ввод различных данных в поле логина и проверка валидации')\n    @pytest.mark.parametrize(\"email, expected_error\", [\n            ('tests@example.com',''),\n            ('79022779866',''),\n            ('798888', 'Некорректный номер телефона'),\n            (',./*\"(*?).', 'Введите свой телефон или e-mail'),\n            ('privet@g', 'Некорректный E-mail')\n        ])\n    def test_auth_valid_login_field(self, email, expected_error):\n>       self.auth_page.open_auth_page()\n\ntests/test_im_reg_auth.py:53: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nself = <pages.authpage.AuthPage object at 0x7f7cb1a41fa0>\n\n    def open_auth_page(self):\n        with (allure.step('Открыть страницу авторизации')):\n            page_url = Links.AUTH_PAGE\n            self.browser.get(page_url)\n>           assert page_url in self.browser.current_url, 'Не удалось открыть сайт'\nE           AssertionError: Не удалось открыть сайт\n\npages/authpage.py:51: AssertionError",
+    "steps" : [ {
+      "name" : "Открыть страницу авторизации",
+      "time" : {
+        "start" : 1738267240045,
+        "stop" : 1738267240049,
+        "duration" : 4
+      },
+      "status" : "failed",
+      "statusMessage" : "AssertionError: Не удалось открыть сайт\n",
+      "statusTrace" : "  File \"/usr/workspace/pages/authpage.py\", line 51, in open_auth_page\n    assert page_url in self.browser.current_url, 'Не удалось открыть сайт'\n",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : true,
+      "stepsCount" : 0,
+      "hasContent" : true
+    } ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : true,
+    "stepsCount" : 1,
+    "hasContent" : true
+  },
+  "afterStages" : [ {
+    "name" : "browser::0",
+    "time" : {
+      "start" : 1738267240064,
+      "stop" : 1738267240118,
+      "duration" : 54
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "stepsCount" : 0,
+    "hasContent" : false
+  } ],
+  "labels" : [ {
+    "name" : "parentSuite",
+    "value" : "ИМ - Регистрация/авторизация"
+  }, {
+    "name" : "suite",
+    "value" : "ИМ - Регистрация/авторизация"
+  }, {
+    "name" : "feature",
+    "value" : "ИМ - Регистрация/авторизация"
+  }, {
+    "name" : "story",
+    "value" : "2.Авторизация. Валидация поля Телефон/E-mail"
+  }, {
+    "name" : "subSuite",
+    "value" : "TestImAuthReg"
+  }, {
+    "name" : "host",
+    "value" : "0ad1073d6a14"
+  }, {
+    "name" : "thread",
+    "value" : "1-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "tests.test_im_reg_auth"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ {
+    "name" : "email",
+    "value" : "'79022779866'"
+  }, {
+    "name" : "expected_error",
+    "value" : "''"
+  } ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ {
+      "name" : "Product defects",
+      "matchedStatuses" : [ ],
+      "flaky" : false
+    } ],
+    "tags" : [ ]
+  },
+  "source" : "6e0eed7307d4de33.json",
+  "parameterValues" : [ "'79022779866'", "''" ]
+}
