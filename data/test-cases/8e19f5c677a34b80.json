@@ -1,0 +1,166 @@
+{
+  "uid" : "8e19f5c677a34b80",
+  "name" : "Ввод различных данных и проверка авторизации ",
+  "fullName" : "tests.test_im_reg_auth.TestImAuthReg#test_auth_check_auth",
+  "historyId" : "4d4e637ff3c1edbcf02fa40a6b4cbe06",
+  "time" : {
+    "start" : 1738329500036,
+    "stop" : 1738329500040,
+    "duration" : 4
+  },
+  "status" : "failed",
+  "statusMessage" : "AssertionError: Не удалось открыть сайт",
+  "statusTrace" : "self = <tests.test_im_reg_auth.TestImAuthReg object at 0x7f3f4232c380>\nlogin = '79112223388', password = 'PolkA890!'\nerror = 'Неверный логин или пароль'\n\n    @allure.story('3.Авторизация. Проверка авторизации')\n    @allure.title('Ввод различных данных и проверка авторизации ')\n    @pytest.mark.parametrize(\"login, password, error\", [\n            ('79112223388', 'PolkA890!', 'Неверный логин или пароль'),\n            ('79000000000', 'PolkA890!', 'Неверный логин или пароль'),\n            ('79935229866', 'PolkA890!', '')\n        ])\n    def test_auth_check_auth(self, login, password, error):\n>       self.auth_page.open_auth_page()\n\ntests/test_im_reg_auth.py:66: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nself = <pages.authpage.AuthPage object at 0x7f3f4278fce0>\n\n    def open_auth_page(self):\n        with (allure.step('Открыть страницу авторизации')):\n            page_url = Links.AUTH_PAGE\n            self.browser.get(page_url)\n>           assert page_url in self.browser.current_url, 'Не удалось открыть сайт'\nE           AssertionError: Не удалось открыть сайт\n\npages/authpage.py:51: AssertionError",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ {
+    "name" : "set_allure_labels",
+    "time" : {
+      "start" : 1738329500035,
+      "stop" : 1738329500035,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false,
+    "stepsCount" : 0
+  }, {
+    "name" : "browser",
+    "time" : {
+      "start" : 1738329499714,
+      "stop" : 1738329500035,
+      "duration" : 321
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false,
+    "stepsCount" : 0
+  }, {
+    "name" : "setup",
+    "time" : {
+      "start" : 1738329500035,
+      "stop" : 1738329500035,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false,
+    "stepsCount" : 0
+  } ],
+  "testStage" : {
+    "status" : "failed",
+    "statusMessage" : "AssertionError: Не удалось открыть сайт",
+    "statusTrace" : "self = <tests.test_im_reg_auth.TestImAuthReg object at 0x7f3f4232c380>\nlogin = '79112223388', password = 'PolkA890!'\nerror = 'Неверный логин или пароль'\n\n    @allure.story('3.Авторизация. Проверка авторизации')\n    @allure.title('Ввод различных данных и проверка авторизации ')\n    @pytest.mark.parametrize(\"login, password, error\", [\n            ('79112223388', 'PolkA890!', 'Неверный логин или пароль'),\n            ('79000000000', 'PolkA890!', 'Неверный логин или пароль'),\n            ('79935229866', 'PolkA890!', '')\n        ])\n    def test_auth_check_auth(self, login, password, error):\n>       self.auth_page.open_auth_page()\n\ntests/test_im_reg_auth.py:66: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nself = <pages.authpage.AuthPage object at 0x7f3f4278fce0>\n\n    def open_auth_page(self):\n        with (allure.step('Открыть страницу авторизации')):\n            page_url = Links.AUTH_PAGE\n            self.browser.get(page_url)\n>           assert page_url in self.browser.current_url, 'Не удалось открыть сайт'\nE           AssertionError: Не удалось открыть сайт\n\npages/authpage.py:51: AssertionError",
+    "steps" : [ {
+      "name" : "Открыть страницу авторизации",
+      "time" : {
+        "start" : 1738329500036,
+        "stop" : 1738329500040,
+        "duration" : 4
+      },
+      "status" : "failed",
+      "statusMessage" : "AssertionError: Не удалось открыть сайт\n",
+      "statusTrace" : "  File \"/usr/workspace/pages/authpage.py\", line 51, in open_auth_page\n    assert page_url in self.browser.current_url, 'Не удалось открыть сайт'\n",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : true,
+      "hasContent" : true,
+      "stepsCount" : 0
+    } ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : true,
+    "hasContent" : true,
+    "stepsCount" : 1
+  },
+  "afterStages" : [ {
+    "name" : "browser::0",
+    "time" : {
+      "start" : 1738329500053,
+      "stop" : 1738329500108,
+      "duration" : 55
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false,
+    "stepsCount" : 0
+  } ],
+  "labels" : [ {
+    "name" : "parentSuite",
+    "value" : "ИМ - Регистрация/авторизация"
+  }, {
+    "name" : "suite",
+    "value" : "ИМ - Регистрация/авторизация"
+  }, {
+    "name" : "feature",
+    "value" : "ИМ - Регистрация/авторизация"
+  }, {
+    "name" : "story",
+    "value" : "3.Авторизация. Проверка авторизации"
+  }, {
+    "name" : "subSuite",
+    "value" : "TestImAuthReg"
+  }, {
+    "name" : "host",
+    "value" : "8c1f4da244fd"
+  }, {
+    "name" : "thread",
+    "value" : "1-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "tests.test_im_reg_auth"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ {
+    "name" : "error",
+    "value" : "'Неверный логин или пароль'"
+  }, {
+    "name" : "login",
+    "value" : "'79112223388'"
+  }, {
+    "name" : "password",
+    "value" : "'PolkA890!'"
+  } ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ {
+      "name" : "Product defects",
+      "matchedStatuses" : [ ],
+      "flaky" : false
+    } ],
+    "tags" : [ ]
+  },
+  "source" : "8e19f5c677a34b80.json",
+  "parameterValues" : [ "'Неверный логин или пароль'", "'79112223388'", "'PolkA890!'" ]
+}

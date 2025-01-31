@@ -1,0 +1,163 @@
+{
+  "uid" : "676b0edfafb4b5ed",
+  "name" : "Yandex и ВК ID. Отображение кнопок входа",
+  "fullName" : "tests.test_im_reg_auth.TestImAuthReg#test_ya_vk_displayed",
+  "historyId" : "155074d0a2e7c52ba7ec7faf6b910362",
+  "time" : {
+    "start" : 1738329533216,
+    "stop" : 1738329543359,
+    "duration" : 10143
+  },
+  "status" : "broken",
+  "statusMessage" : "selenium.common.exceptions.TimeoutException: Message:",
+  "statusTrace" : "self = <tests.test_im_reg_auth.TestImAuthReg object at 0x7f3f4232cd10>\n\n    @allure.story('6.Yandex и ВК ID. Отображение кнопок входа')\n    @allure.title('Yandex и ВК ID. Отображение кнопок входа')\n    def test_ya_vk_displayed(self):\n>       self.auth_page.open_auth_page()\n\ntests/test_im_reg_auth.py:90: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \npages/authpage.py:52: in open_auth_page\n    button_submit = self.wait_for_clickable_element('//button[text()=\"Применить\"]')\npages/authpage.py:28: in wait_for_clickable_element\n    return WebDriverWait(self.browser, timeout).until(\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nself = <selenium.webdriver.support.wait.WebDriverWait (session=\"040c50deb7984d0f1645471809858c0f\")>\nmethod = <function element_to_be_clickable.<locals>._predicate at 0x7f3f42370c20>\nmessage = ''\n\n    def until(self, method: Callable[[D], Union[Literal[False], T]], message: str = \"\") -> T:\n        \"\"\"Calls the method provided with the driver as an argument until the \\\n        return value does not evaluate to ``False``.\n    \n        :param method: callable(WebDriver)\n        :param message: optional message for :exc:`TimeoutException`\n        :returns: the result of the last call to `method`\n        :raises: :exc:`selenium.common.exceptions.TimeoutException` if timeout occurs\n        \"\"\"\n        screen = None\n        stacktrace = None\n    \n        end_time = time.monotonic() + self._timeout\n        while True:\n            try:\n                value = method(self._driver)\n                if value:\n                    return value\n            except self._ignored_exceptions as exc:\n                screen = getattr(exc, \"screen\", None)\n                stacktrace = getattr(exc, \"stacktrace\", None)\n            if time.monotonic() > end_time:\n                break\n            time.sleep(self._poll)\n>       raise TimeoutException(message, screen, stacktrace)\nE       selenium.common.exceptions.TimeoutException: Message:\n\n../local/lib/python3.12/site-packages/selenium/webdriver/support/wait.py:105: TimeoutException",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ {
+    "name" : "setup",
+    "time" : {
+      "start" : 1738329533215,
+      "stop" : 1738329533215,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false,
+    "stepsCount" : 0
+  }, {
+    "name" : "browser",
+    "time" : {
+      "start" : 1738329532897,
+      "stop" : 1738329533215,
+      "duration" : 318
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false,
+    "stepsCount" : 0
+  }, {
+    "name" : "set_allure_labels",
+    "time" : {
+      "start" : 1738329533215,
+      "stop" : 1738329533215,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false,
+    "stepsCount" : 0
+  } ],
+  "testStage" : {
+    "status" : "broken",
+    "statusMessage" : "selenium.common.exceptions.TimeoutException: Message:",
+    "statusTrace" : "self = <tests.test_im_reg_auth.TestImAuthReg object at 0x7f3f4232cd10>\n\n    @allure.story('6.Yandex и ВК ID. Отображение кнопок входа')\n    @allure.title('Yandex и ВК ID. Отображение кнопок входа')\n    def test_ya_vk_displayed(self):\n>       self.auth_page.open_auth_page()\n\ntests/test_im_reg_auth.py:90: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \npages/authpage.py:52: in open_auth_page\n    button_submit = self.wait_for_clickable_element('//button[text()=\"Применить\"]')\npages/authpage.py:28: in wait_for_clickable_element\n    return WebDriverWait(self.browser, timeout).until(\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nself = <selenium.webdriver.support.wait.WebDriverWait (session=\"040c50deb7984d0f1645471809858c0f\")>\nmethod = <function element_to_be_clickable.<locals>._predicate at 0x7f3f42370c20>\nmessage = ''\n\n    def until(self, method: Callable[[D], Union[Literal[False], T]], message: str = \"\") -> T:\n        \"\"\"Calls the method provided with the driver as an argument until the \\\n        return value does not evaluate to ``False``.\n    \n        :param method: callable(WebDriver)\n        :param message: optional message for :exc:`TimeoutException`\n        :returns: the result of the last call to `method`\n        :raises: :exc:`selenium.common.exceptions.TimeoutException` if timeout occurs\n        \"\"\"\n        screen = None\n        stacktrace = None\n    \n        end_time = time.monotonic() + self._timeout\n        while True:\n            try:\n                value = method(self._driver)\n                if value:\n                    return value\n            except self._ignored_exceptions as exc:\n                screen = getattr(exc, \"screen\", None)\n                stacktrace = getattr(exc, \"stacktrace\", None)\n            if time.monotonic() > end_time:\n                break\n            time.sleep(self._poll)\n>       raise TimeoutException(message, screen, stacktrace)\nE       selenium.common.exceptions.TimeoutException: Message:\n\n../local/lib/python3.12/site-packages/selenium/webdriver/support/wait.py:105: TimeoutException",
+    "steps" : [ {
+      "name" : "Открыть страницу авторизации",
+      "time" : {
+        "start" : 1738329533216,
+        "stop" : 1738329543359,
+        "duration" : 10143
+      },
+      "status" : "broken",
+      "statusMessage" : "selenium.common.exceptions.TimeoutException: Message: \n\n",
+      "statusTrace" : "  File \"/usr/workspace/pages/authpage.py\", line 52, in open_auth_page\n    button_submit = self.wait_for_clickable_element('//button[text()=\"Применить\"]')\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/workspace/pages/authpage.py\", line 28, in wait_for_clickable_element\n    return WebDriverWait(self.browser, timeout).until(\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.12/site-packages/selenium/webdriver/support/wait.py\", line 105, in until\n    raise TimeoutException(message, screen, stacktrace)\n",
+      "steps" : [ ],
+      "attachments" : [ {
+        "uid" : "f1fb1f2d285a9fd5",
+        "name" : "Ошибка ожидания кликабельного элемента: //button[text()=\"Применить\"]",
+        "source" : "f1fb1f2d285a9fd5.txt",
+        "type" : "text/plain",
+        "size" : 10
+      } ],
+      "parameters" : [ ],
+      "attachmentsCount" : 1,
+      "shouldDisplayMessage" : true,
+      "hasContent" : true,
+      "stepsCount" : 0
+    } ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "attachmentsCount" : 1,
+    "shouldDisplayMessage" : true,
+    "hasContent" : true,
+    "stepsCount" : 1
+  },
+  "afterStages" : [ {
+    "name" : "browser::0",
+    "time" : {
+      "start" : 1738329543373,
+      "stop" : 1738329543427,
+      "duration" : 54
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false,
+    "stepsCount" : 0
+  } ],
+  "labels" : [ {
+    "name" : "parentSuite",
+    "value" : "ИМ - Регистрация/авторизация"
+  }, {
+    "name" : "suite",
+    "value" : "ИМ - Регистрация/авторизация"
+  }, {
+    "name" : "feature",
+    "value" : "ИМ - Регистрация/авторизация"
+  }, {
+    "name" : "story",
+    "value" : "6.Yandex и ВК ID. Отображение кнопок входа"
+  }, {
+    "name" : "subSuite",
+    "value" : "TestImAuthReg"
+  }, {
+    "name" : "host",
+    "value" : "8c1f4da244fd"
+  }, {
+    "name" : "thread",
+    "value" : "1-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "tests.test_im_reg_auth"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ {
+      "name" : "Test defects",
+      "matchedStatuses" : [ ],
+      "flaky" : false
+    } ],
+    "tags" : [ ]
+  },
+  "source" : "676b0edfafb4b5ed.json",
+  "parameterValues" : [ ]
+}
