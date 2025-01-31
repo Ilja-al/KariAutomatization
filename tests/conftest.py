@@ -8,10 +8,10 @@ from config.data import Data
 @pytest.fixture(scope='function', autouse=True)
 def browser(request):
     options = Options()
-    #options.add_argument('--headless')  # Безголовый режим
-    #options.add_argument('--disable-gpu')  # Отключение GPU
-    #options.add_argument('--disable-dev-shm-usage')  # Отключает использование общего разделяемого памяти
-    #options.add_argument('--no-sandbox')  # Полезно для Docker
+    options.add_argument('--headless')  # Безголовый режим
+    options.add_argument('--disable-gpu')  # Отключение GPU
+    options.add_argument('--disable-dev-shm-usage')  # Отключает использование общего разделяемого памяти
+    options.add_argument('--no-sandbox')  # Полезно для Docker
     options.add_argument('--window-size=1920,1080')  # Размер окна
     options.page_load_strategy = 'none'  # Отключаем ожидание полной загрузки страницы
     # browser.maximize_window()  # Разворачивание на полный экран
