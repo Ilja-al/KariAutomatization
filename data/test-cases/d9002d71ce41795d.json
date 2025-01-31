@@ -1,23 +1,23 @@
 {
-  "uid" : "7b7c85f6f7f104de",
+  "uid" : "d9002d71ce41795d",
   "name" : "Ввести номер телефона зарегестрированного пользователя и нажать кнопку \"Получить код\"",
   "fullName" : "tests.test_im_reg_auth.TestImAuthReg#test_reg_form_input_tel",
   "historyId" : "50c2108d2666d959969303d163eb65e0",
   "time" : {
-    "start" : 1738329466474,
-    "stop" : 1738329466478,
+    "start" : 1738330024288,
+    "stop" : 1738330024292,
     "duration" : 4
   },
   "status" : "failed",
   "statusMessage" : "AssertionError: Не удалось перейти на страницу регистрации",
-  "statusTrace" : "self = <tests.test_im_reg_auth.TestImAuthReg object at 0x7f3f4232eab0>\n\n    @allure.story('1.Регистрация. Переход к форме заполнения данных нового аккаунта')\n    @allure.title('Ввести номер телефона зарегестрированного пользователя и нажать кнопку \"Получить код\"')\n    def test_reg_form_input_tel(self):\n>       self.reg_page.open_reg_page()\n\ntests/test_im_reg_auth.py:38: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nself = <pages.regpage.RegPage object at 0x7f3f427958e0>\n\n    def open_reg_page(self):\n        with allure.step('Открыть страницу регистрации'):\n            page_url = Links.REG_PAGE\n            self.browser.get(page_url)\n>           assert page_url in self.browser.current_url, 'Не удалось перейти на страницу регистрации'\nE           AssertionError: Не удалось перейти на страницу регистрации\n\npages/regpage.py:38: AssertionError",
+  "statusTrace" : "self = <tests.test_im_reg_auth.TestImAuthReg object at 0x7fd3c45bbf20>\n\n    @allure.story('1.Регистрация. Переход к форме заполнения данных нового аккаунта')\n    @allure.title('Ввести номер телефона зарегестрированного пользователя и нажать кнопку \"Получить код\"')\n    def test_reg_form_input_tel(self):\n>       self.reg_page.open_reg_page()\n\ntests/test_im_reg_auth.py:38: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nself = <pages.regpage.RegPage object at 0x7fd3c455a4e0>\n\n    def open_reg_page(self):\n        with allure.step('Открыть страницу регистрации'):\n            page_url = Links.REG_PAGE\n            self.browser.get(page_url)\n>           assert page_url in self.browser.current_url, 'Не удалось перейти на страницу регистрации'\nE           AssertionError: Не удалось перейти на страницу регистрации\n\npages/regpage.py:38: AssertionError",
   "flaky" : false,
   "newFailed" : false,
   "beforeStages" : [ {
     "name" : "set_allure_labels",
     "time" : {
-      "start" : 1738329466473,
-      "stop" : 1738329466473,
+      "start" : 1738330024287,
+      "stop" : 1738330024287,
       "duration" : 0
     },
     "status" : "passed",
@@ -26,28 +26,13 @@
     "parameters" : [ ],
     "attachmentsCount" : 0,
     "shouldDisplayMessage" : false,
-    "hasContent" : false,
-    "stepsCount" : 0
-  }, {
-    "name" : "browser",
-    "time" : {
-      "start" : 1738329466158,
-      "stop" : 1738329466473,
-      "duration" : 315
-    },
-    "status" : "passed",
-    "steps" : [ ],
-    "attachments" : [ ],
-    "parameters" : [ ],
-    "attachmentsCount" : 0,
-    "shouldDisplayMessage" : false,
-    "hasContent" : false,
-    "stepsCount" : 0
+    "stepsCount" : 0,
+    "hasContent" : false
   }, {
     "name" : "setup",
     "time" : {
-      "start" : 1738329466473,
-      "stop" : 1738329466473,
+      "start" : 1738330024288,
+      "stop" : 1738330024288,
       "duration" : 0
     },
     "status" : "passed",
@@ -56,19 +41,34 @@
     "parameters" : [ ],
     "attachmentsCount" : 0,
     "shouldDisplayMessage" : false,
-    "hasContent" : false,
-    "stepsCount" : 0
+    "stepsCount" : 0,
+    "hasContent" : false
+  }, {
+    "name" : "browser",
+    "time" : {
+      "start" : 1738330023976,
+      "stop" : 1738330024287,
+      "duration" : 311
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "stepsCount" : 0,
+    "hasContent" : false
   } ],
   "testStage" : {
     "status" : "failed",
     "statusMessage" : "AssertionError: Не удалось перейти на страницу регистрации",
-    "statusTrace" : "self = <tests.test_im_reg_auth.TestImAuthReg object at 0x7f3f4232eab0>\n\n    @allure.story('1.Регистрация. Переход к форме заполнения данных нового аккаунта')\n    @allure.title('Ввести номер телефона зарегестрированного пользователя и нажать кнопку \"Получить код\"')\n    def test_reg_form_input_tel(self):\n>       self.reg_page.open_reg_page()\n\ntests/test_im_reg_auth.py:38: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nself = <pages.regpage.RegPage object at 0x7f3f427958e0>\n\n    def open_reg_page(self):\n        with allure.step('Открыть страницу регистрации'):\n            page_url = Links.REG_PAGE\n            self.browser.get(page_url)\n>           assert page_url in self.browser.current_url, 'Не удалось перейти на страницу регистрации'\nE           AssertionError: Не удалось перейти на страницу регистрации\n\npages/regpage.py:38: AssertionError",
+    "statusTrace" : "self = <tests.test_im_reg_auth.TestImAuthReg object at 0x7fd3c45bbf20>\n\n    @allure.story('1.Регистрация. Переход к форме заполнения данных нового аккаунта')\n    @allure.title('Ввести номер телефона зарегестрированного пользователя и нажать кнопку \"Получить код\"')\n    def test_reg_form_input_tel(self):\n>       self.reg_page.open_reg_page()\n\ntests/test_im_reg_auth.py:38: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nself = <pages.regpage.RegPage object at 0x7fd3c455a4e0>\n\n    def open_reg_page(self):\n        with allure.step('Открыть страницу регистрации'):\n            page_url = Links.REG_PAGE\n            self.browser.get(page_url)\n>           assert page_url in self.browser.current_url, 'Не удалось перейти на страницу регистрации'\nE           AssertionError: Не удалось перейти на страницу регистрации\n\npages/regpage.py:38: AssertionError",
     "steps" : [ {
       "name" : "Открыть страницу регистрации",
       "time" : {
-        "start" : 1738329466474,
-        "stop" : 1738329466478,
-        "duration" : 4
+        "start" : 1738330024288,
+        "stop" : 1738330024291,
+        "duration" : 3
       },
       "status" : "failed",
       "statusMessage" : "AssertionError: Не удалось перейти на страницу регистрации\n",
@@ -78,21 +78,21 @@
       "parameters" : [ ],
       "attachmentsCount" : 0,
       "shouldDisplayMessage" : true,
-      "hasContent" : true,
-      "stepsCount" : 0
+      "stepsCount" : 0,
+      "hasContent" : true
     } ],
     "attachments" : [ ],
     "parameters" : [ ],
     "attachmentsCount" : 0,
     "shouldDisplayMessage" : true,
-    "hasContent" : true,
-    "stepsCount" : 1
+    "stepsCount" : 1,
+    "hasContent" : true
   },
   "afterStages" : [ {
     "name" : "browser::0",
     "time" : {
-      "start" : 1738329466484,
-      "stop" : 1738329466539,
+      "start" : 1738330024299,
+      "stop" : 1738330024354,
       "duration" : 55
     },
     "status" : "passed",
@@ -101,8 +101,8 @@
     "parameters" : [ ],
     "attachmentsCount" : 0,
     "shouldDisplayMessage" : false,
-    "hasContent" : false,
-    "stepsCount" : 0
+    "stepsCount" : 0,
+    "hasContent" : false
   } ],
   "labels" : [ {
     "name" : "parentSuite",
@@ -121,7 +121,7 @@
     "value" : "TestImAuthReg"
   }, {
     "name" : "host",
-    "value" : "8c1f4da244fd"
+    "value" : "23184f157363"
   }, {
     "name" : "thread",
     "value" : "1-MainThread"
@@ -152,6 +152,6 @@
     } ],
     "tags" : [ ]
   },
-  "source" : "7b7c85f6f7f104de.json",
+  "source" : "d9002d71ce41795d.json",
   "parameterValues" : [ ]
 }
