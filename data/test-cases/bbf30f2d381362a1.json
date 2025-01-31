@@ -1,24 +1,24 @@
 {
-  "uid" : "28b188d13ecbced",
+  "uid" : "bbf30f2d381362a1",
   "name" : "Авторизация по SMS. Проверка валидации",
   "fullName" : "tests.test_im_reg_auth.TestImAuthReg#test_auth_sms_valid_phone_field",
   "historyId" : "28261400019f4e2d42426bcb7dfdda6f",
   "time" : {
-    "start" : 1738267339922,
-    "stop" : 1738267339927,
-    "duration" : 5
+    "start" : 1738325922402,
+    "stop" : 1738325922406,
+    "duration" : 4
   },
   "status" : "failed",
   "statusMessage" : "AssertionError: Не удалось открыть сайт",
-  "statusTrace" : "self = <tests.test_im_reg_auth.TestImAuthReg object at 0x7f7cb1a59d30>\nphone = '79022779866', error = ''\n\n    @allure.story('5.Авторизация по SMS. Проверка валидации')\n    @allure.title('Авторизация по SMS. Проверка валидации')\n    @pytest.mark.parametrize(\"phone, error\", [\n            ('790227798', 'Введите оставшиеся цифры'),\n            ('79022779866', '')])\n    def test_auth_sms_valid_phone_field(self, phone, error):\n>       self.auth_page.open_auth_page()\n\ntests/test_im_reg_auth.py:83: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nself = <pages.authpage.AuthPage object at 0x7f7cb1f29250>\n\n    def open_auth_page(self):\n        with (allure.step('Открыть страницу авторизации')):\n            page_url = Links.AUTH_PAGE\n            self.browser.get(page_url)\n>           assert page_url in self.browser.current_url, 'Не удалось открыть сайт'\nE           AssertionError: Не удалось открыть сайт\n\npages/authpage.py:51: AssertionError",
+  "statusTrace" : "self = <tests.test_im_reg_auth.TestImAuthReg object at 0x7f94b2bf0a40>\nphone = '79022779866', error = ''\n\n    @allure.story('5.Авторизация по SMS. Проверка валидации')\n    @allure.title('Авторизация по SMS. Проверка валидации')\n    @pytest.mark.parametrize(\"phone, error\", [\n            ('790227798', 'Введите оставшиеся цифры'),\n            ('79022779866', '')])\n    def test_auth_sms_valid_phone_field(self, phone, error):\n>       self.auth_page.open_auth_page()\n\ntests/test_im_reg_auth.py:83: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nself = <pages.authpage.AuthPage object at 0x7f94b3061e50>\n\n    def open_auth_page(self):\n        with (allure.step('Открыть страницу авторизации')):\n            page_url = Links.AUTH_PAGE\n            self.browser.get(page_url)\n>           assert page_url in self.browser.current_url, 'Не удалось открыть сайт'\nE           AssertionError: Не удалось открыть сайт\n\npages/authpage.py:51: AssertionError",
   "flaky" : false,
   "newFailed" : false,
   "beforeStages" : [ {
     "name" : "setup",
     "time" : {
-      "start" : 1738267339922,
-      "stop" : 1738267339922,
-      "duration" : 0
+      "start" : 1738325922401,
+      "stop" : 1738325922402,
+      "duration" : 1
     },
     "status" : "passed",
     "steps" : [ ],
@@ -31,9 +31,9 @@
   }, {
     "name" : "browser",
     "time" : {
-      "start" : 1738267339610,
-      "stop" : 1738267339922,
-      "duration" : 312
+      "start" : 1738325922085,
+      "stop" : 1738325922401,
+      "duration" : 316
     },
     "status" : "passed",
     "steps" : [ ],
@@ -46,8 +46,8 @@
   }, {
     "name" : "set_allure_labels",
     "time" : {
-      "start" : 1738267339922,
-      "stop" : 1738267339922,
+      "start" : 1738325922401,
+      "stop" : 1738325922401,
       "duration" : 0
     },
     "status" : "passed",
@@ -62,13 +62,13 @@
   "testStage" : {
     "status" : "failed",
     "statusMessage" : "AssertionError: Не удалось открыть сайт",
-    "statusTrace" : "self = <tests.test_im_reg_auth.TestImAuthReg object at 0x7f7cb1a59d30>\nphone = '79022779866', error = ''\n\n    @allure.story('5.Авторизация по SMS. Проверка валидации')\n    @allure.title('Авторизация по SMS. Проверка валидации')\n    @pytest.mark.parametrize(\"phone, error\", [\n            ('790227798', 'Введите оставшиеся цифры'),\n            ('79022779866', '')])\n    def test_auth_sms_valid_phone_field(self, phone, error):\n>       self.auth_page.open_auth_page()\n\ntests/test_im_reg_auth.py:83: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nself = <pages.authpage.AuthPage object at 0x7f7cb1f29250>\n\n    def open_auth_page(self):\n        with (allure.step('Открыть страницу авторизации')):\n            page_url = Links.AUTH_PAGE\n            self.browser.get(page_url)\n>           assert page_url in self.browser.current_url, 'Не удалось открыть сайт'\nE           AssertionError: Не удалось открыть сайт\n\npages/authpage.py:51: AssertionError",
+    "statusTrace" : "self = <tests.test_im_reg_auth.TestImAuthReg object at 0x7f94b2bf0a40>\nphone = '79022779866', error = ''\n\n    @allure.story('5.Авторизация по SMS. Проверка валидации')\n    @allure.title('Авторизация по SMS. Проверка валидации')\n    @pytest.mark.parametrize(\"phone, error\", [\n            ('790227798', 'Введите оставшиеся цифры'),\n            ('79022779866', '')])\n    def test_auth_sms_valid_phone_field(self, phone, error):\n>       self.auth_page.open_auth_page()\n\ntests/test_im_reg_auth.py:83: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nself = <pages.authpage.AuthPage object at 0x7f94b3061e50>\n\n    def open_auth_page(self):\n        with (allure.step('Открыть страницу авторизации')):\n            page_url = Links.AUTH_PAGE\n            self.browser.get(page_url)\n>           assert page_url in self.browser.current_url, 'Не удалось открыть сайт'\nE           AssertionError: Не удалось открыть сайт\n\npages/authpage.py:51: AssertionError",
     "steps" : [ {
       "name" : "Открыть страницу авторизации",
       "time" : {
-        "start" : 1738267339923,
-        "stop" : 1738267339926,
-        "duration" : 3
+        "start" : 1738325922402,
+        "stop" : 1738325922406,
+        "duration" : 4
       },
       "status" : "failed",
       "statusMessage" : "AssertionError: Не удалось открыть сайт\n",
@@ -91,8 +91,8 @@
   "afterStages" : [ {
     "name" : "browser::0",
     "time" : {
-      "start" : 1738267339939,
-      "stop" : 1738267339994,
+      "start" : 1738325922418,
+      "stop" : 1738325922473,
       "duration" : 55
     },
     "status" : "passed",
@@ -121,7 +121,7 @@
     "value" : "TestImAuthReg"
   }, {
     "name" : "host",
-    "value" : "0ad1073d6a14"
+    "value" : "f7afffe73c72"
   }, {
     "name" : "thread",
     "value" : "1-MainThread"
@@ -158,6 +158,6 @@
     } ],
     "tags" : [ ]
   },
-  "source" : "28b188d13ecbced.json",
+  "source" : "bbf30f2d381362a1.json",
   "parameterValues" : [ "''", "'79022779866'" ]
 }

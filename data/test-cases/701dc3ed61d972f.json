@@ -1,24 +1,24 @@
 {
-  "uid" : "778e43df99806b4a",
+  "uid" : "701dc3ed61d972f",
   "name" : "Ввести в поле ввода номера символы и буквы",
   "fullName" : "tests.test_im_reg_auth.TestImAuthReg#test_reg_form_input_tel_validation",
   "historyId" : "8e1a7ae46d4da3279db79e4eeecd1216",
   "time" : {
-    "start" : 1738267194477,
-    "stop" : 1738267194482,
+    "start" : 1738325831276,
+    "stop" : 1738325831281,
     "duration" : 5
   },
   "status" : "failed",
   "statusMessage" : "AssertionError: Не удалось перейти на страницу регистрации",
-  "statusTrace" : "self = <tests.test_im_reg_auth.TestImAuthReg object at 0x7f7cb1a5b5f0>\nphone = 'АаZz!@#$ _', error = 'Обязательное поле'\n\n    @allure.story('1.Регистрация. Переход к форме заполнения данных нового аккаунта')\n    @allure.title('Ввести в поле ввода номера символы и буквы')\n    @pytest.mark.parametrize(\"phone, error\", [\n            ('АаZz!@#$ _', 'Обязательное поле'),\n            ('987654321', 'Введите оставшиеся цифры')])\n    def test_reg_form_input_tel_validation(self, phone, error):\n>       self.reg_page.open_reg_page()\n\ntests/test_im_reg_auth.py:23: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nself = <pages.regpage.RegPage object at 0x7f7cb1ee9520>\n\n    def open_reg_page(self):\n        with allure.step('Открыть страницу регистрации'):\n            page_url = Links.REG_PAGE\n            self.browser.get(page_url)\n>           assert page_url in self.browser.current_url, 'Не удалось перейти на страницу регистрации'\nE           AssertionError: Не удалось перейти на страницу регистрации\n\npages/regpage.py:38: AssertionError",
+  "statusTrace" : "self = <tests.test_im_reg_auth.TestImAuthReg object at 0x7f94b2bf3f80>\nphone = 'АаZz!@#$ _', error = 'Обязательное поле'\n\n    @allure.story('1.Регистрация. Переход к форме заполнения данных нового аккаунта')\n    @allure.title('Ввести в поле ввода номера символы и буквы')\n    @pytest.mark.parametrize(\"phone, error\", [\n            ('АаZz!@#$ _', 'Обязательное поле'),\n            ('987654321', 'Введите оставшиеся цифры')])\n    def test_reg_form_input_tel_validation(self, phone, error):\n>       self.reg_page.open_reg_page()\n\ntests/test_im_reg_auth.py:23: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nself = <pages.regpage.RegPage object at 0x7f94b3026a50>\n\n    def open_reg_page(self):\n        with allure.step('Открыть страницу регистрации'):\n            page_url = Links.REG_PAGE\n            self.browser.get(page_url)\n>           assert page_url in self.browser.current_url, 'Не удалось перейти на страницу регистрации'\nE           AssertionError: Не удалось перейти на страницу регистрации\n\npages/regpage.py:38: AssertionError",
   "flaky" : false,
   "newFailed" : false,
   "beforeStages" : [ {
-    "name" : "browser",
+    "name" : "set_allure_labels",
     "time" : {
-      "start" : 1738267194164,
-      "stop" : 1738267194477,
-      "duration" : 313
+      "start" : 1738325831276,
+      "stop" : 1738325831276,
+      "duration" : 0
     },
     "status" : "passed",
     "steps" : [ ],
@@ -29,11 +29,11 @@
     "stepsCount" : 0,
     "hasContent" : false
   }, {
-    "name" : "set_allure_labels",
+    "name" : "browser",
     "time" : {
-      "start" : 1738267194477,
-      "stop" : 1738267194477,
-      "duration" : 0
+      "start" : 1738325830956,
+      "stop" : 1738325831276,
+      "duration" : 320
     },
     "status" : "passed",
     "steps" : [ ],
@@ -46,8 +46,8 @@
   }, {
     "name" : "setup",
     "time" : {
-      "start" : 1738267194477,
-      "stop" : 1738267194477,
+      "start" : 1738325831276,
+      "stop" : 1738325831276,
       "duration" : 0
     },
     "status" : "passed",
@@ -62,12 +62,12 @@
   "testStage" : {
     "status" : "failed",
     "statusMessage" : "AssertionError: Не удалось перейти на страницу регистрации",
-    "statusTrace" : "self = <tests.test_im_reg_auth.TestImAuthReg object at 0x7f7cb1a5b5f0>\nphone = 'АаZz!@#$ _', error = 'Обязательное поле'\n\n    @allure.story('1.Регистрация. Переход к форме заполнения данных нового аккаунта')\n    @allure.title('Ввести в поле ввода номера символы и буквы')\n    @pytest.mark.parametrize(\"phone, error\", [\n            ('АаZz!@#$ _', 'Обязательное поле'),\n            ('987654321', 'Введите оставшиеся цифры')])\n    def test_reg_form_input_tel_validation(self, phone, error):\n>       self.reg_page.open_reg_page()\n\ntests/test_im_reg_auth.py:23: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nself = <pages.regpage.RegPage object at 0x7f7cb1ee9520>\n\n    def open_reg_page(self):\n        with allure.step('Открыть страницу регистрации'):\n            page_url = Links.REG_PAGE\n            self.browser.get(page_url)\n>           assert page_url in self.browser.current_url, 'Не удалось перейти на страницу регистрации'\nE           AssertionError: Не удалось перейти на страницу регистрации\n\npages/regpage.py:38: AssertionError",
+    "statusTrace" : "self = <tests.test_im_reg_auth.TestImAuthReg object at 0x7f94b2bf3f80>\nphone = 'АаZz!@#$ _', error = 'Обязательное поле'\n\n    @allure.story('1.Регистрация. Переход к форме заполнения данных нового аккаунта')\n    @allure.title('Ввести в поле ввода номера символы и буквы')\n    @pytest.mark.parametrize(\"phone, error\", [\n            ('АаZz!@#$ _', 'Обязательное поле'),\n            ('987654321', 'Введите оставшиеся цифры')])\n    def test_reg_form_input_tel_validation(self, phone, error):\n>       self.reg_page.open_reg_page()\n\ntests/test_im_reg_auth.py:23: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nself = <pages.regpage.RegPage object at 0x7f94b3026a50>\n\n    def open_reg_page(self):\n        with allure.step('Открыть страницу регистрации'):\n            page_url = Links.REG_PAGE\n            self.browser.get(page_url)\n>           assert page_url in self.browser.current_url, 'Не удалось перейти на страницу регистрации'\nE           AssertionError: Не удалось перейти на страницу регистрации\n\npages/regpage.py:38: AssertionError",
     "steps" : [ {
       "name" : "Открыть страницу регистрации",
       "time" : {
-        "start" : 1738267194477,
-        "stop" : 1738267194481,
+        "start" : 1738325831276,
+        "stop" : 1738325831280,
         "duration" : 4
       },
       "status" : "failed",
@@ -91,8 +91,8 @@
   "afterStages" : [ {
     "name" : "browser::0",
     "time" : {
-      "start" : 1738267194489,
-      "stop" : 1738267194544,
+      "start" : 1738325831288,
+      "stop" : 1738325831343,
       "duration" : 55
     },
     "status" : "passed",
@@ -121,7 +121,7 @@
     "value" : "TestImAuthReg"
   }, {
     "name" : "host",
-    "value" : "0ad1073d6a14"
+    "value" : "f7afffe73c72"
   }, {
     "name" : "thread",
     "value" : "1-MainThread"
@@ -158,6 +158,6 @@
     } ],
     "tags" : [ ]
   },
-  "source" : "778e43df99806b4a.json",
+  "source" : "701dc3ed61d972f.json",
   "parameterValues" : [ "'Обязательное поле'", "'АаZz!@#$ _'" ]
 }

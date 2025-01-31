@@ -9,33 +9,33 @@
       "total" : 1
     },
     "items" : [ {
-      "uid" : "95f7e7adffeb1d27",
+      "uid" : "779f63fbb9fe22b5",
       "status" : "broken",
       "statusDetails" : "selenium.common.exceptions.TimeoutException: Message:",
       "time" : {
-        "start" : 1738267283906,
-        "stop" : 1738267298345,
-        "duration" : 14439
+        "start" : 1738325885413,
+        "stop" : 1738325899784,
+        "duration" : 14371
       }
     } ]
   },
   "f6bffaa098c0061225a1acc3b1f5a83e" : {
     "statistic" : {
-      "failed" : 0,
-      "broken" : 1,
+      "failed" : 1,
+      "broken" : 0,
       "skipped" : 0,
       "passed" : 0,
       "unknown" : 0,
       "total" : 1
     },
     "items" : [ {
-      "uid" : "5943e08e4a93074f",
-      "status" : "broken",
-      "statusDetails" : "selenium.common.exceptions.TimeoutException: Message:",
+      "uid" : "7aa51b7151b2f340",
+      "status" : "failed",
+      "statusDetails" : "AssertionError: Не удалось открыть сайт",
       "time" : {
-        "start" : 1738267298729,
-        "stop" : 1738267308867,
-        "duration" : 10138
+        "start" : 1738325900163,
+        "stop" : 1738325900168,
+        "duration" : 5
       }
     } ]
   },
@@ -49,13 +49,13 @@
       "total" : 1
     },
     "items" : [ {
-      "uid" : "7f7652ef7e11add6",
+      "uid" : "87c0b33801567e86",
       "status" : "broken",
       "statusDetails" : "selenium.common.exceptions.TimeoutException: Message:",
       "time" : {
-        "start" : 1738267255239,
-        "stop" : 1738267269330,
-        "duration" : 14091
+        "start" : 1738325874276,
+        "stop" : 1738325884614,
+        "duration" : 10338
       }
     } ]
   },
@@ -69,12 +69,12 @@
       "total" : 1
     },
     "items" : [ {
-      "uid" : "778e43df99806b4a",
+      "uid" : "701dc3ed61d972f",
       "status" : "failed",
       "statusDetails" : "AssertionError: Не удалось перейти на страницу регистрации",
       "time" : {
-        "start" : 1738267194477,
-        "stop" : 1738267194482,
+        "start" : 1738325831276,
+        "stop" : 1738325831281,
         "duration" : 5
       }
     } ]
@@ -89,53 +89,53 @@
       "total" : 1
     },
     "items" : [ {
-      "uid" : "7010534318c6659",
+      "uid" : "f289212e0ba718d8",
       "status" : "broken",
       "statusDetails" : "selenium.common.exceptions.TimeoutException: Message:",
       "time" : {
-        "start" : 1738267194858,
-        "stop" : 1738267208908,
-        "duration" : 14050
+        "start" : 1738325831658,
+        "stop" : 1738325846807,
+        "duration" : 15149
       }
     } ]
   },
   "4f82e1f7d0e35e4e334541eac0046bfa" : {
     "statistic" : {
-      "failed" : 0,
-      "broken" : 1,
+      "failed" : 1,
+      "broken" : 0,
       "skipped" : 0,
       "passed" : 0,
       "unknown" : 0,
       "total" : 1
     },
     "items" : [ {
-      "uid" : "8cb3cc2da9f05494",
-      "status" : "broken",
-      "statusDetails" : "selenium.common.exceptions.TimeoutException: Message:",
+      "uid" : "6c56e387336d6a72",
+      "status" : "failed",
+      "statusDetails" : "AssertionError: Не удалось перейти на страницу регистрации",
       "time" : {
-        "start" : 1738267209290,
-        "stop" : 1738267224384,
-        "duration" : 15094
+        "start" : 1738325847192,
+        "stop" : 1738325847197,
+        "duration" : 5
       }
     } ]
   },
   "abd52438f381959e83418c3d26fa6587" : {
     "statistic" : {
-      "failed" : 0,
-      "broken" : 1,
+      "failed" : 1,
+      "broken" : 0,
       "skipped" : 0,
       "passed" : 0,
       "unknown" : 0,
       "total" : 1
     },
     "items" : [ {
-      "uid" : "7a1810a5c717eb06",
-      "status" : "broken",
-      "statusDetails" : "selenium.common.exceptions.TimeoutException: Message:",
+      "uid" : "ac9dde8bb0113652",
+      "status" : "failed",
+      "statusDetails" : "AssertionError: Не удалось открыть сайт",
       "time" : {
-        "start" : 1738267240437,
-        "stop" : 1738267254855,
-        "duration" : 14418
+        "start" : 1738325873886,
+        "stop" : 1738325873890,
+        "duration" : 4
       }
     } ]
   },
@@ -149,17 +149,17 @@
       "total" : 1
     },
     "items" : [ {
-      "uid" : "28b188d13ecbced",
+      "uid" : "bbf30f2d381362a1",
       "status" : "failed",
       "statusDetails" : "AssertionError: Не удалось открыть сайт",
       "time" : {
-        "start" : 1738267339922,
-        "stop" : 1738267339927,
-        "duration" : 5
+        "start" : 1738325922402,
+        "stop" : 1738325922406,
+        "duration" : 4
       }
     } ]
   },
-  "9c171b49f60730a7ee0914174e3b2b1b" : {
+  "577a8ce2b31a95b0a83e7c3180545874" : {
     "statistic" : {
       "failed" : 0,
       "broken" : 1,
@@ -169,13 +169,13 @@
       "total" : 1
     },
     "items" : [ {
-      "uid" : "126ee5ab15ffd886",
+      "uid" : "f0f91865c1da02f6",
       "status" : "broken",
       "statusDetails" : "selenium.common.exceptions.TimeoutException: Message:",
       "time" : {
-        "start" : 1738267324564,
-        "stop" : 1738267339542,
-        "duration" : 14978
+        "start" : 1738325900562,
+        "stop" : 1738325910904,
+        "duration" : 10342
       }
     } ]
   },
@@ -189,53 +189,73 @@
       "total" : 1
     },
     "items" : [ {
-      "uid" : "5c23009f3df8760",
+      "uid" : "3dbf25163ab548f3",
       "status" : "broken",
       "statusDetails" : "selenium.common.exceptions.TimeoutException: Message:",
       "time" : {
-        "start" : 1738267340312,
-        "stop" : 1738267354588,
-        "duration" : 14276
+        "start" : 1738325922799,
+        "stop" : 1738325936350,
+        "duration" : 13551
+      }
+    } ]
+  },
+  "9c171b49f60730a7ee0914174e3b2b1b" : {
+    "statistic" : {
+      "failed" : 1,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 0,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "40e66f4b5f47ea85",
+      "status" : "failed",
+      "statusDetails" : "AssertionError: Не удалось открыть сайт",
+      "time" : {
+        "start" : 1738325922012,
+        "stop" : 1738325922016,
+        "duration" : 4
       }
     } ]
   },
   "0aeedb9f1fbb16765c0de8cc79a04e0b" : {
     "statistic" : {
-      "failed" : 1,
-      "broken" : 0,
+      "failed" : 0,
+      "broken" : 1,
       "skipped" : 0,
       "passed" : 0,
       "unknown" : 0,
       "total" : 1
     },
     "items" : [ {
-      "uid" : "6e0eed7307d4de33",
-      "status" : "failed",
-      "statusDetails" : "AssertionError: Не удалось открыть сайт",
+      "uid" : "11a16896384d15ba",
+      "status" : "broken",
+      "statusDetails" : "selenium.common.exceptions.TimeoutException: Message:",
       "time" : {
-        "start" : 1738267240045,
-        "stop" : 1738267240049,
-        "duration" : 4
+        "start" : 1738325862904,
+        "stop" : 1738325873504,
+        "duration" : 10600
       }
     } ]
   },
   "4327a2538df1fd0991067895ee32532b" : {
     "statistic" : {
-      "failed" : 1,
-      "broken" : 0,
+      "failed" : 0,
+      "broken" : 1,
       "skipped" : 0,
       "passed" : 0,
       "unknown" : 0,
       "total" : 1
     },
     "items" : [ {
-      "uid" : "3a6d928ea34f80ae",
-      "status" : "failed",
-      "statusDetails" : "AssertionError: Не удалось открыть сайт",
+      "uid" : "57dd2065bec6b88",
+      "status" : "broken",
+      "statusDetails" : "selenium.common.exceptions.TimeoutException: Message:",
       "time" : {
-        "start" : 1738267239655,
-        "stop" : 1738267239660,
-        "duration" : 5
+        "start" : 1738325847984,
+        "stop" : 1738325862521,
+        "duration" : 14537
       }
     } ]
   },
@@ -249,33 +269,33 @@
       "total" : 1
     },
     "items" : [ {
-      "uid" : "5973a1762476b140",
+      "uid" : "9ccd83b2b341652f",
       "status" : "broken",
       "statusDetails" : "selenium.common.exceptions.TimeoutException: Message:",
       "time" : {
-        "start" : 1738267354982,
-        "stop" : 1738267369066,
-        "duration" : 14084
+        "start" : 1738325936742,
+        "stop" : 1738325946887,
+        "duration" : 10145
       }
     } ]
   },
   "50c2108d2666d959969303d163eb65e0" : {
     "statistic" : {
-      "failed" : 0,
-      "broken" : 1,
+      "failed" : 1,
+      "broken" : 0,
       "skipped" : 0,
       "passed" : 0,
       "unknown" : 0,
       "total" : 1
     },
     "items" : [ {
-      "uid" : "7dbcae0f29f2489e",
-      "status" : "broken",
-      "statusDetails" : "selenium.common.exceptions.TimeoutException: Message:",
+      "uid" : "9db6cc0c1bcfc0c0",
+      "status" : "failed",
+      "statusDetails" : "AssertionError: Не удалось перейти на страницу регистрации",
       "time" : {
-        "start" : 1738267224773,
-        "stop" : 1738267239275,
-        "duration" : 14502
+        "start" : 1738325847581,
+        "stop" : 1738325847585,
+        "duration" : 4
       }
     } ]
   },
@@ -289,57 +309,17 @@
       "total" : 1
     },
     "items" : [ {
-      "uid" : "5e52945e490f3758",
+      "uid" : "63342b9c123aba8",
       "status" : "broken",
       "statusDetails" : "selenium.common.exceptions.TimeoutException: Message:",
       "time" : {
-        "start" : 1738267309636,
-        "stop" : 1738267324184,
-        "duration" : 14548
+        "start" : 1738325911290,
+        "stop" : 1738325921628,
+        "duration" : 10338
       }
     } ]
   },
   "a140a25e67c7f5c70c9d9bc61bfce68f" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 1,
-      "skipped" : 0,
-      "passed" : 0,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "849156cbe49df7c8",
-      "status" : "broken",
-      "statusDetails" : "selenium.common.exceptions.TimeoutException: Message:",
-      "time" : {
-        "start" : 1738267269713,
-        "stop" : 1738267283524,
-        "duration" : 13811
-      }
-    } ]
-  },
-  "82664eb132805c654001f74874064465" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 1,
-      "skipped" : 0,
-      "passed" : 0,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "7c8116c363412e11",
-      "status" : "broken",
-      "statusDetails" : "selenium.common.exceptions.TimeoutException: Message:",
-      "time" : {
-        "start" : 1738267179315,
-        "stop" : 1738267194039,
-        "duration" : 14724
-      }
-    } ]
-  },
-  "d42df7ec694b84bc95445bde47e69bf6" : {
     "statistic" : {
       "failed" : 1,
       "broken" : 0,
@@ -349,12 +329,32 @@
       "total" : 1
     },
     "items" : [ {
-      "uid" : "856c77d4561424cd",
+      "uid" : "c1276b9d93c64445",
       "status" : "failed",
       "statusDetails" : "AssertionError: Не удалось открыть сайт",
       "time" : {
-        "start" : 1738267309247,
-        "stop" : 1738267309252,
+        "start" : 1738325885008,
+        "stop" : 1738325885012,
+        "duration" : 4
+      }
+    } ]
+  },
+  "82664eb132805c654001f74874064465" : {
+    "statistic" : {
+      "failed" : 1,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 0,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "6c51a0c8c50ddac4",
+      "status" : "failed",
+      "statusDetails" : "AssertionError: Не удалось открыть сайт",
+      "time" : {
+        "start" : 1738325830826,
+        "stop" : 1738325830831,
         "duration" : 5
       }
     } ]
