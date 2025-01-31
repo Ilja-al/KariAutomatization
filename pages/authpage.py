@@ -185,24 +185,30 @@ class AuthPage(BasePage):
 
     def enter_sms_code(self, phone_number, mongo_client):
         try:
+            # Подключение к MongoDB
+            confirmcodes_collection = mongo_client["confirmcodes"]
+            clients_collection = mongo_client["clients"]
+            # Формируем запрос для удаления объекта из confirmcodes
+            query = {"phone": f"+7{phone_number}"}
+            deleted_count = confirmcodes_collection.delete_one(query).deleted_count
+            if deleted_count:
+                print(f"Объект с телефоном +7{phone_number} успешно удален из MongoDB (confirmcodes).")
+            else:
+                print(f"Объект с телефоном +7{phone_number} не найден в MongoDB (confirmcodes).")
             with allure.step('Нажать "Получить код"'):
-                submit_button = self.wait_for_clickable_element("//button[text()='Получить код']",By.XPATH)
+                submit_button = self.wait_for_clickable_element("//button[text()='Получить код']", By.XPATH)
                 submit_button.click()
             # Небольшая задержка для генерации кода
             time.sleep(2)
-            # Подключение к MongoDB через фикстуру
-            collection_name = "clients"
-            query = {"phone": f"+7{phone_number}"}
+            # Повторно запрашиваем данные из clients
             projection = {"oneTimePassword.confirmCode": 1, "_id": 0}
-            collection = mongo_client[collection_name]
-            result = collection.find_one(query, projection)
+            result = clients_collection.find_one(query, projection)
             if not result or "oneTimePassword" not in result or "confirmCode" not in result["oneTimePassword"]:
-                raise ValueError("Не удалось найти код подтверждения в базе данных!")
+                raise ValueError("Не удалось найти код подтверждения в базе данных (clients)!")
             confirm_code = result["oneTimePassword"]["confirmCode"]
             with allure.step('Ввод кода подтверждения'):
                 # Ввод каждой цифры кода в соответствующий input[data-id]
                 for i, digit in enumerate(confirm_code):
-                    # Ожидание появления соответствующего input[data-id]
                     code_input = self.wait_for_element(f"input[data-id='{i}']", By.CSS_SELECTOR)
                     code_input.send_keys(digit)
                 print("Код подтверждения успешно введен!")
@@ -213,7 +219,7 @@ class AuthPage(BasePage):
                 assert self.check_element_displayed('button.css-10vxmgq', By.CSS_SELECTOR), "Кнопка 'Изменить и войти' не найдена"
                 print("Все элементы формы восстановления пароля успешно найдены!")
         except Exception as e:
-            print(f"Что то пошло не так: {e}")
+            print(f"Что-то пошло не так: {e}")
 
     def generate_password(self, length=8):
         characters = string.ascii_letters + string.digits

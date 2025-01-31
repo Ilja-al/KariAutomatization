@@ -60,7 +60,7 @@ class TestImAuthReg(BaseTest):
     @pytest.mark.parametrize("login, password, error", [
             ('79112223388', 'PolkA890!', 'Неверный логин или пароль'),
             ('79000000000', 'PolkA890!', 'Неверный логин или пароль'),
-            ('79022779866', 'PolkA890!', '')
+            ('79935229866', 'PolkA890!', '')
         ])
     def test_auth_check_auth(self, login, password, error):
         self.auth_page.open_auth_page()
