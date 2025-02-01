@@ -27,20 +27,20 @@ class MainPage(BasePage):
         return element
 
     def open_main_page(self):
-    with allure.step('Открыть сайт'):
-        page_url = Links.HOST
-        print(f"Попытка открыть сайт: {page_url}")  # Выводим, какой URL пытаемся открыть
-        self.browser.get(page_url)
-        # Печатаем текущий URL после загрузки страницы
-        print(f"Текущий URL: {self.browser.current_url}")
-        # Ожидаем, что в URL будет содержаться `page_url`
-        WebDriverWait(self.browser, 10).until(
-            EC.url_contains(page_url)
-        )
-        # Печатаем, если сайт все-таки не открылся как нужно
-        if page_url not in self.browser.current_url:
-            print(f"Ошибка: Ожидался URL: {page_url}, но фактический URL: {self.browser.current_url}")
-        assert page_url in self.browser.current_url, 'Не удалось открыть сайт'
+        with allure.step('Открыть сайт'):
+            page_url = Links.HOST
+            print(f"Попытка открыть сайт: {page_url}")  # Выводим, какой URL пытаемся открыть
+            self.browser.get(page_url)
+            # Печатаем текущий URL после загрузки страницы
+            print(f"Текущий URL: {self.browser.current_url}")
+            # Ожидаем, что в URL будет содержаться `page_url`
+            WebDriverWait(self.browser, 10).until(
+                EC.url_contains(page_url)
+            )
+            # Печатаем, если сайт все-таки не открылся как нужно
+            if page_url not in self.browser.current_url:
+                print(f"Ошибка: Ожидался URL: {page_url}, но фактический URL: {self.browser.current_url}")
+            assert page_url in self.browser.current_url, 'Не удалось открыть сайт'
 
     def click_login_icon(self): # Иконка входа
         with allure.step('Нажать иконку входа'):
