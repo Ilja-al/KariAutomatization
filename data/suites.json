@@ -1,5 +1,30 @@
 {
   "uid" : "98d3104e051c652961429bf95fa0b5d6",
-  "children" : [ ],
+  "children" : [ {
+    "name" : "ИМ - Регистрация/авторизация",
+    "children" : [ {
+      "name" : "ИМ - Регистрация/авторизация",
+      "children" : [ {
+        "name" : "TestImAuthReg",
+        "children" : [ {
+          "name" : "Нажать кнопку \"Создать аккаунт\"",
+          "uid" : "6caa35f35d415615",
+          "parentUid" : "b0c589e60cef44429e3208481a81bd7b",
+          "status" : "broken",
+          "time" : {
+            "start" : 1738436472455,
+            "stop" : 1738436487383,
+            "duration" : 14928
+          },
+          "flaky" : false,
+          "newFailed" : false,
+          "parameters" : [ ]
+        } ],
+        "uid" : "b0c589e60cef44429e3208481a81bd7b"
+      } ],
+      "uid" : "3b1075a7d434de01e6293fa48c41bc05"
+    } ],
+    "uid" : "fd652d380ddcde4e84639f008bc4ad45"
+  } ],
   "name" : "suites"
 }
