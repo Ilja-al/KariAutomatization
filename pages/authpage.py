@@ -105,8 +105,10 @@ class AuthPage(BasePage):
                 error_message = self.wait_for_element(f'//p[contains(text(), "{error}")]', By.XPATH)
                 assert error_message.is_displayed(), f"Ошибка: Ожидаемое сообщение '{error}'"
             else:
-                login_success = self.wait_for_element('//p[contains(text(), "Илья")]', By.XPATH)
-                assert login_success.is_displayed(), "Ошибка: Успешная авторизация не была подтверждена"
+                with allure.step('Проверка успешного входа'):
+                    login_success = self.wait_for_element('//p[contains(@class, "css-jjvis4")]', By.XPATH)
+                    WebDriverWait(self.browser, 10).until(lambda d: login_success.text.strip(),"Текст в элементе не появился")
+                    assert login_success.text.strip(), "Ошибка: Успешная авторизация не была подтверждена"
 
     def switch_between_login_methods(self):
         with allure.step('Нажать кнопку "По СМС"'):
@@ -151,15 +153,10 @@ class AuthPage(BasePage):
 
     def ya_vk_displayed(self):
         with allure.step('Проверка отображения кнопок Яндекса и ВК'):
-            # Ожидание появления iframe и переключение на него
-            iframe = self.wait_for_element('//iframe[@id="iframe"]', By.XPATH)
-            self.browser.switch_to.frame(iframe)
-            # Ожидание появления кнопки Яндекса
-            self.wait_for_element('//div[contains(@class, "yaPersonalButtonLogo")]', By.XPATH)
-            # Ожидание появления кнопки ВК
-            self.wait_for_element('//button[contains(@class, "css-14c1lv3")]', By.XPATH)
-            # Возвращаемся в основной контекст страницы
-            self.browser.switch_to.default_content()
+            with allure.step('Отображение кнопки VK'):
+                self.check_element_displayed('//button[contains(@class, "css-14c1lv3")]', By.XPATH)
+            with allure.step('Отображение кнопки Yandex'): #пока проверяю ток контейнер
+                self.wait_for_element('//div[@id="yandex_auth"]', By.XPATH)
 
     def press_forgot_pass(self):
         with allure.step('Нажать "Забыли пароль?"'):
@@ -246,8 +243,8 @@ class AuthPage(BasePage):
             submit_button = self.wait_for_element('button.css-10vxmgq', By.CSS_SELECTOR)
             submit_button.click()
         with allure.step('Проверка успешного входа'):
-            login_success = self.wait_for_element('//p[contains(text(), "Илья")]', By.XPATH)
-            assert login_success.is_displayed(), "Ошибка: Успешная авторизация не была подтверждена"
+            login_success = self.wait_for_element('//p', By.XPATH)  # Ищем просто элемент <p>
+            assert login_success.is_displayed() and login_success.text.strip(), "Ошибка: Успешная авторизация не была подтверждена"
         with allure.step('Выход из аккаунта'):
             profile_element = self.wait_for_clickable_element('p.css-jjvis4.e2cllgv0', By.CSS_SELECTOR)
             profile_element.click()

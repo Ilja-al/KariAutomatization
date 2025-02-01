@@ -29,9 +29,7 @@ class MainPage(BasePage):
     def open_main_page(self):
         with allure.step('Открыть сайт'):
             page_url = Links.HOST
-            print(f"Открываем страницу: {page_url}")
             self.browser.get(page_url)
-            print(f"Ожидалось: {page_url}, но текущий URL: {self.browser.current_url}")
             assert page_url in self.browser.current_url, 'Не удалось открыть сайт'
             button_submit = self.wait_for_clickable_element('//button[text()="Применить"]')
             button_submit.click()

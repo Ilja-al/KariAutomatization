@@ -34,7 +34,7 @@ class TestImAuthReg(BaseTest):
 
     @allure.story('1.Регистрация. Переход к форме заполнения данных нового аккаунта')
     @allure.title('Ввести номер телефона зарегестрированного пользователя и нажать кнопку "Получить код"')
-    def test_reg_form_input_tel(self):
+    def test_reg_form_input_tel(self): #поправить, на случай если код отправляется без капчи, либо чаще раза в минуту
         self.reg_page.open_reg_page()
         self.reg_page.reg_input_tel()
         assert self.reg_page.find_captcha().is_displayed()
