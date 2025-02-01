@@ -4,12 +4,12 @@
     "uid" : "3741cbdb89112d35a42fdf96a3c12d65",
     "name" : "ИМ - Регистрация/авторизация",
     "statistic" : {
-      "failed" : 4,
-      "broken" : 3,
+      "failed" : 1,
+      "broken" : 0,
       "skipped" : 0,
       "passed" : 0,
       "unknown" : 0,
-      "total" : 7
+      "total" : 1
     }
   } ]
 }

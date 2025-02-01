@@ -1,247 +1,26 @@
 {
   "uid" : "ab17fc5a4eb3bca4b216b548c7f9fcbc",
   "children" : [ {
-    "name" : "f4af20bfbdea",
+    "name" : "4589fc15ee03",
     "children" : [ {
       "name" : "1-MainThread",
       "children" : [ {
-        "name" : "Ввод различных данных в поле логина и проверка валидации",
-        "uid" : "dda3cc4695624f10",
-        "parentUid" : "a0089f95874cc29be57554d54b4d830c",
-        "status" : "broken",
-        "time" : {
-          "start" : 1738434352582,
-          "stop" : 1738434366392,
-          "duration" : 13810
-        },
-        "flaky" : false,
-        "newFailed" : false,
-        "parameters" : [ "',./*\"(*?).'", "'Введите свой телефон или e-mail'" ]
-      }, {
-        "name" : "Ввод различных данных и проверка авторизации ",
-        "uid" : "c3414fac7c4e8fc",
-        "parentUid" : "a0089f95874cc29be57554d54b4d830c",
-        "status" : "broken",
-        "time" : {
-          "start" : 1738434382861,
-          "stop" : 1738434396964,
-          "duration" : 14103
-        },
-        "flaky" : false,
-        "newFailed" : false,
-        "parameters" : [ "''", "'79935229866'", "'PolkA890!'" ]
-      }, {
-        "name" : "Ввод различных данных в поле логина и проверка валидации",
-        "uid" : "ea536b71a02a3112",
-        "parentUid" : "a0089f95874cc29be57554d54b4d830c",
-        "status" : "broken",
-        "time" : {
-          "start" : 1738434337677,
-          "stop" : 1738434352200,
-          "duration" : 14523
-        },
-        "flaky" : false,
-        "newFailed" : false,
-        "parameters" : [ "'798888'", "'Некорректный номер телефона'" ]
-      }, {
-        "name" : "Авторизация по SMS. Проверка валидации",
-        "uid" : "27ba139da64c9415",
-        "parentUid" : "a0089f95874cc29be57554d54b4d830c",
-        "status" : "broken",
-        "time" : {
-          "start" : 1738434397745,
-          "stop" : 1738434412555,
-          "duration" : 14810
-        },
-        "flaky" : false,
-        "newFailed" : false,
-        "parameters" : [ "'Введите оставшиеся цифры'", "'790227798'" ]
-      }, {
-        "name" : "Ввести в поле ввода номера символы и буквы",
-        "uid" : "a7204c2102500f56",
-        "parentUid" : "a0089f95874cc29be57554d54b4d830c",
-        "status" : "broken",
-        "time" : {
-          "start" : 1738434276738,
-          "stop" : 1738434291847,
-          "duration" : 15109
-        },
-        "flaky" : false,
-        "newFailed" : false,
-        "parameters" : [ "'Обязательное поле'", "'АаZz!@#$ _'" ]
-      }, {
-        "name" : "Ввод различных данных в поле логина и проверка валидации",
-        "uid" : "d26e18af06fcd8a5",
-        "parentUid" : "a0089f95874cc29be57554d54b4d830c",
-        "status" : "failed",
-        "time" : {
-          "start" : 1738434337290,
-          "stop" : 1738434337294,
-          "duration" : 4
-        },
-        "flaky" : false,
-        "newFailed" : false,
-        "parameters" : [ "'79022779866'", "''" ]
-      }, {
-        "name" : "Авторизация. Проверка переключения между способами входа",
-        "uid" : "12b9c5f8860cf6a4",
-        "parentUid" : "a0089f95874cc29be57554d54b4d830c",
-        "status" : "failed",
-        "time" : {
-          "start" : 1738434397355,
-          "stop" : 1738434397360,
-          "duration" : 5
-        },
-        "flaky" : false,
-        "newFailed" : false,
-        "parameters" : [ ]
-      }, {
-        "name" : "Ввод различных данных и проверка авторизации ",
-        "uid" : "7d5545064a7164fe",
-        "parentUid" : "a0089f95874cc29be57554d54b4d830c",
-        "status" : "failed",
-        "time" : {
-          "start" : 1738434382086,
-          "stop" : 1738434382090,
-          "duration" : 4
-        },
-        "flaky" : false,
-        "newFailed" : false,
-        "parameters" : [ "'Неверный логин или пароль'", "'79112223388'", "'PolkA890!'" ]
-      }, {
-        "name" : "Yandex и ВК ID. Отображение кнопок входа",
-        "uid" : "23569d13b069ab9f",
-        "parentUid" : "a0089f95874cc29be57554d54b4d830c",
-        "status" : "broken",
-        "time" : {
-          "start" : 1738434423615,
-          "stop" : 1738434433906,
-          "duration" : 10291
-        },
-        "flaky" : false,
-        "newFailed" : false,
-        "parameters" : [ ]
-      }, {
-        "name" : "Ввести в поле ввода номера символы и буквы",
-        "uid" : "b729199975771faa",
-        "parentUid" : "a0089f95874cc29be57554d54b4d830c",
-        "status" : "broken",
-        "time" : {
-          "start" : 1738434292232,
-          "stop" : 1738434306409,
-          "duration" : 14177
-        },
-        "flaky" : false,
-        "newFailed" : false,
-        "parameters" : [ "'Введите оставшиеся цифры'", "'987654321'" ]
-      }, {
-        "name" : "Ввести номер телефона зарегестрированного пользователя и нажать кнопку \"Получить код\"",
-        "uid" : "cd2afe24a8cebad4",
-        "parentUid" : "a0089f95874cc29be57554d54b4d830c",
-        "status" : "failed",
-        "time" : {
-          "start" : 1738434321750,
-          "stop" : 1738434321755,
-          "duration" : 5
-        },
-        "flaky" : false,
-        "newFailed" : false,
-        "parameters" : [ ]
-      }, {
-        "name" : "Ввод различных данных и проверка авторизации ",
-        "uid" : "6d7f3b10e9876193",
-        "parentUid" : "a0089f95874cc29be57554d54b4d830c",
-        "status" : "failed",
-        "time" : {
-          "start" : 1738434382476,
-          "stop" : 1738434382481,
-          "duration" : 5
-        },
-        "flaky" : false,
-        "newFailed" : false,
-        "parameters" : [ "'Неверный логин или пароль'", "'79000000000'", "'PolkA890!'" ]
-      }, {
-        "name" : "Восстановление пароля пользователя",
-        "uid" : "a4fe62a0abff240b",
-        "parentUid" : "a0089f95874cc29be57554d54b4d830c",
-        "status" : "broken",
-        "time" : {
-          "start" : 1738434434298,
-          "stop" : 1738434444576,
-          "duration" : 10278
-        },
-        "flaky" : false,
-        "newFailed" : false,
-        "parameters" : [ ]
-      }, {
-        "name" : "Ввести номер телефона не зарегистрированного пользователя и нажать \"Получить код\"",
-        "uid" : "2fdff178a9f0643f",
-        "parentUid" : "a0089f95874cc29be57554d54b4d830c",
-        "status" : "broken",
-        "time" : {
-          "start" : 1738434306793,
-          "stop" : 1738434321379,
-          "duration" : 14586
-        },
-        "flaky" : false,
-        "newFailed" : false,
-        "parameters" : [ ]
-      }, {
-        "name" : "Ввод различных данных в поле логина и проверка валидации",
-        "uid" : "96db0641744d7d9c",
-        "parentUid" : "a0089f95874cc29be57554d54b4d830c",
-        "status" : "broken",
-        "time" : {
-          "start" : 1738434366784,
-          "stop" : 1738434381706,
-          "duration" : 14922
-        },
-        "flaky" : false,
-        "newFailed" : false,
-        "parameters" : [ "'privet@g'", "'Некорректный E-mail'" ]
-      }, {
-        "name" : "Ввод различных данных в поле логина и проверка валидации",
-        "uid" : "6912a2a1f76942d7",
-        "parentUid" : "a0089f95874cc29be57554d54b4d830c",
-        "status" : "broken",
-        "time" : {
-          "start" : 1738434322135,
-          "stop" : 1738434336905,
-          "duration" : 14770
-        },
-        "flaky" : false,
-        "newFailed" : false,
-        "parameters" : [ "'tests@example.com'", "''" ]
-      }, {
         "name" : "Нажать кнопку \"Создать аккаунт\"",
-        "uid" : "3162be1aaa70c2b6",
-        "parentUid" : "a0089f95874cc29be57554d54b4d830c",
-        "status" : "broken",
+        "uid" : "e39e963a22beb803",
+        "parentUid" : "55a57ee98dee1fd9e7d75becfc21c781",
+        "status" : "failed",
         "time" : {
-          "start" : 1738434261687,
-          "stop" : 1738434276290,
-          "duration" : 14603
+          "start" : 1738435756915,
+          "stop" : 1738435756920,
+          "duration" : 5
         },
         "flaky" : false,
         "newFailed" : false,
         "parameters" : [ ]
-      }, {
-        "name" : "Авторизация по SMS. Проверка валидации",
-        "uid" : "2463b5ff995267e",
-        "parentUid" : "a0089f95874cc29be57554d54b4d830c",
-        "status" : "broken",
-        "time" : {
-          "start" : 1738434412942,
-          "stop" : 1738434423229,
-          "duration" : 10287
-        },
-        "flaky" : false,
-        "newFailed" : false,
-        "parameters" : [ "''", "'79022779866'" ]
       } ],
-      "uid" : "a0089f95874cc29be57554d54b4d830c"
+      "uid" : "55a57ee98dee1fd9e7d75becfc21c781"
     } ],
-    "uid" : "8fec7ecd1e242525d67bf811071afbef"
+    "uid" : "f99c12a4e006195f76aa9a5d6de5e327"
   } ],
   "name" : "timeline"
 }
