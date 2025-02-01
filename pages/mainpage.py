@@ -41,17 +41,21 @@ class MainPage(BasePage):
             if page_url not in self.browser.current_url:
                 print(f"Ошибка: Ожидался URL: {page_url}, но фактический URL: {self.browser.current_url}")
             assert page_url in self.browser.current_url, 'Не удалось открыть сайт'
-            print("Ожидание загрузки кнопки")
-            button_submit = self.wait_for_clickable_element('//button[text()="Применить"]')
-            print("Элемент найден, кликаем по кнопке...")
-            button_submit.click()
+            #print("Ожидание загрузки кнопки")
+            #button_submit = self.wait_for_clickable_element('//button[text()="Применить"]')
+            #print("Элемент найден, кликаем по кнопке...")
+            #button_submit.click()
 
     def click_login_icon(self): # Иконка входа
         with allure.step('Нажать иконку входа'):
-                login_icon = self.wait_for_clickable_element('//button[@class="css-1svjifm e2cllgv3"]')
-                login_icon.click()
+            print("Поиск иконки")    
+            login_icon = self.wait_for_clickable_element('//button[@class="css-1svjifm e2cllgv3"]')
+            print("Нажатие на иконку")    
+            login_icon.click()
 
     def click_enter_registration(self): # войти или зарегистрироваться
         with allure.step('Нажать "Войти или зарегистрироваться"'):
-                enter_registration = self.wait_for_clickable_element('//a[@class="css-oc613h e1bfq77c24"]')
-                enter_registration.click()
+            print("Поиск кнопки Войти")     
+            enter_registration = self.wait_for_clickable_element('//a[@class="css-oc613h e1bfq77c24"]')
+            print("Нажатие кнопки Войти")  
+            enter_registration.click()
