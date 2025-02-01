@@ -41,6 +41,8 @@ class MainPage(BasePage):
             if page_url not in self.browser.current_url:
                 print(f"Ошибка: Ожидался URL: {page_url}, но фактический URL: {self.browser.current_url}")
             assert page_url in self.browser.current_url, 'Не удалось открыть сайт'
+            button_submit = self.wait_for_clickable_element('//button[text()="Применить"]')
+            button_submit.click()
 
     def click_login_icon(self): # Иконка входа
         with allure.step('Нажать иконку входа'):
