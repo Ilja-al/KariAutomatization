@@ -6,13 +6,13 @@
       "name" : "selenium.common.exceptions.TimeoutException: Message:",
       "children" : [ {
         "name" : "Нажать кнопку \"Создать аккаунт\"",
-        "uid" : "6caa35f35d415615",
+        "uid" : "8ad4f1f9225d660",
         "parentUid" : "31bb78a6a95ede3f78b260ed048910d8",
         "status" : "broken",
         "time" : {
-          "start" : 1738436472455,
-          "stop" : 1738436487383,
-          "duration" : 14928
+          "start" : 1738436956422,
+          "stop" : 1738436971546,
+          "duration" : 15124
         },
         "flaky" : false,
         "newFailed" : false,
