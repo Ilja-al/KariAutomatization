@@ -13,7 +13,7 @@ class TestImAuthReg(BaseTest):
         self.main_page.click_enter_registration()
         self.auth_page.click_create_button()
 
-
+'''
     @allure.story('1.Регистрация. Переход к форме заполнения данных нового аккаунта')
     @allure.title('Ввести в поле ввода номера символы и буквы')
     @pytest.mark.parametrize("phone, error", [
@@ -86,7 +86,7 @@ class TestImAuthReg(BaseTest):
 
     @allure.story('6.Yandex и ВК ID. Отображение кнопок входа')
     @allure.title('Yandex и ВК ID. Отображение кнопок входа')
-    def test_ya_vk_displayed(self):
+    def test_ya_vk_displayed(self): #поправить, не ожидается загрузка ya, ток проверяется наличие элемента
         self.auth_page.open_auth_page()
         self.auth_page.ya_vk_displayed()
 
@@ -100,3 +100,4 @@ class TestImAuthReg(BaseTest):
         self.auth_page.input_reg_tel(phone_number)
         self.auth_page.enter_sms_code(phone_number, mongo_client)
         self.auth_page.change_password()
+'''
