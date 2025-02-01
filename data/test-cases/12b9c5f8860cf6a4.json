@@ -1,0 +1,157 @@
+{
+  "uid" : "12b9c5f8860cf6a4",
+  "name" : "Авторизация. Проверка переключения между способами входа",
+  "fullName" : "tests.test_im_reg_auth.TestImAuthReg#test_switch_between_login_methods",
+  "historyId" : "b2fd36a43aeeb60a00917776e6aa72d3",
+  "time" : {
+    "start" : 1738434397355,
+    "stop" : 1738434397360,
+    "duration" : 5
+  },
+  "status" : "failed",
+  "statusMessage" : "AssertionError: Не удалось открыть сайт",
+  "statusTrace" : "self = <tests.test_im_reg_auth.TestImAuthReg object at 0x7f234dd10230>\n\n    @allure.story('4.Авторизация. Проверка переключения между способами входа')\n    @allure.title('Авторизация. Проверка переключения между способами входа')\n    def test_switch_between_login_methods(self):\n>       self.auth_page.open_auth_page()\n\ntests/test_im_reg_auth.py:73: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nself = <pages.authpage.AuthPage object at 0x7f234dcb0560>\n\n    def open_auth_page(self):\n        with (allure.step('Открыть страницу авторизации')):\n            page_url = Links.AUTH_PAGE\n            self.browser.get(page_url)\n>           assert page_url in self.browser.current_url, 'Не удалось открыть сайт'\nE           AssertionError: Не удалось открыть сайт\n\npages/authpage.py:51: AssertionError",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ {
+    "name" : "browser",
+    "time" : {
+      "start" : 1738434397034,
+      "stop" : 1738434397355,
+      "duration" : 321
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  }, {
+    "name" : "set_allure_labels",
+    "time" : {
+      "start" : 1738434397355,
+      "stop" : 1738434397355,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  }, {
+    "name" : "setup",
+    "time" : {
+      "start" : 1738434397355,
+      "stop" : 1738434397355,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  } ],
+  "testStage" : {
+    "status" : "failed",
+    "statusMessage" : "AssertionError: Не удалось открыть сайт",
+    "statusTrace" : "self = <tests.test_im_reg_auth.TestImAuthReg object at 0x7f234dd10230>\n\n    @allure.story('4.Авторизация. Проверка переключения между способами входа')\n    @allure.title('Авторизация. Проверка переключения между способами входа')\n    def test_switch_between_login_methods(self):\n>       self.auth_page.open_auth_page()\n\ntests/test_im_reg_auth.py:73: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nself = <pages.authpage.AuthPage object at 0x7f234dcb0560>\n\n    def open_auth_page(self):\n        with (allure.step('Открыть страницу авторизации')):\n            page_url = Links.AUTH_PAGE\n            self.browser.get(page_url)\n>           assert page_url in self.browser.current_url, 'Не удалось открыть сайт'\nE           AssertionError: Не удалось открыть сайт\n\npages/authpage.py:51: AssertionError",
+    "steps" : [ {
+      "name" : "Открыть страницу авторизации",
+      "time" : {
+        "start" : 1738434397355,
+        "stop" : 1738434397359,
+        "duration" : 4
+      },
+      "status" : "failed",
+      "statusMessage" : "AssertionError: Не удалось открыть сайт\n",
+      "statusTrace" : "  File \"/usr/workspace/pages/authpage.py\", line 51, in open_auth_page\n    assert page_url in self.browser.current_url, 'Не удалось открыть сайт'\n",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "hasContent" : true,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : true
+    } ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 1,
+    "hasContent" : true,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : true
+  },
+  "afterStages" : [ {
+    "name" : "browser::0",
+    "time" : {
+      "start" : 1738434397371,
+      "stop" : 1738434397426,
+      "duration" : 55
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  } ],
+  "labels" : [ {
+    "name" : "parentSuite",
+    "value" : "ИМ - Регистрация/авторизация"
+  }, {
+    "name" : "suite",
+    "value" : "ИМ - Регистрация/авторизация"
+  }, {
+    "name" : "feature",
+    "value" : "ИМ - Регистрация/авторизация"
+  }, {
+    "name" : "story",
+    "value" : "4.Авторизация. Проверка переключения между способами входа"
+  }, {
+    "name" : "subSuite",
+    "value" : "TestImAuthReg"
+  }, {
+    "name" : "host",
+    "value" : "f4af20bfbdea"
+  }, {
+    "name" : "thread",
+    "value" : "1-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "tests.test_im_reg_auth"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ {
+      "name" : "Product defects",
+      "matchedStatuses" : [ ],
+      "flaky" : false
+    } ],
+    "tags" : [ ]
+  },
+  "source" : "12b9c5f8860cf6a4.json",
+  "parameterValues" : [ ]
+}

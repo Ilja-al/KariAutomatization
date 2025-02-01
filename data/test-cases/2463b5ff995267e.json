@@ -1,0 +1,169 @@
+{
+  "uid" : "2463b5ff995267e",
+  "name" : "Авторизация по SMS. Проверка валидации",
+  "fullName" : "tests.test_im_reg_auth.TestImAuthReg#test_auth_sms_valid_phone_field",
+  "historyId" : "28261400019f4e2d42426bcb7dfdda6f",
+  "time" : {
+    "start" : 1738434412942,
+    "stop" : 1738434423229,
+    "duration" : 10287
+  },
+  "status" : "broken",
+  "statusMessage" : "selenium.common.exceptions.TimeoutException: Message:",
+  "statusTrace" : "self = <tests.test_im_reg_auth.TestImAuthReg object at 0x7f234dd10b00>\nphone = '79022779866', error = ''\n\n    @allure.story('5.Авторизация по SMS. Проверка валидации')\n    @allure.title('Авторизация по SMS. Проверка валидации')\n    @pytest.mark.parametrize(\"phone, error\", [\n            ('790227798', 'Введите оставшиеся цифры'),\n            ('79022779866', '')])\n    def test_auth_sms_valid_phone_field(self, phone, error):\n>       self.auth_page.open_auth_page()\n\ntests/test_im_reg_auth.py:83: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \npages/authpage.py:52: in open_auth_page\n    button_submit = self.wait_for_clickable_element('//button[text()=\"Применить\"]')\npages/authpage.py:28: in wait_for_clickable_element\n    return WebDriverWait(self.browser, timeout).until(\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nself = <selenium.webdriver.support.wait.WebDriverWait (session=\"c427ae627ff36ad0220fc15c86584b29\")>\nmethod = <function element_to_be_clickable.<locals>._predicate at 0x7f234dd5aa20>\nmessage = ''\n\n    def until(self, method: Callable[[D], Union[Literal[False], T]], message: str = \"\") -> T:\n        \"\"\"Calls the method provided with the driver as an argument until the \\\n        return value does not evaluate to ``False``.\n    \n        :param method: callable(WebDriver)\n        :param message: optional message for :exc:`TimeoutException`\n        :returns: the result of the last call to `method`\n        :raises: :exc:`selenium.common.exceptions.TimeoutException` if timeout occurs\n        \"\"\"\n        screen = None\n        stacktrace = None\n    \n        end_time = time.monotonic() + self._timeout\n        while True:\n            try:\n                value = method(self._driver)\n                if value:\n                    return value\n            except self._ignored_exceptions as exc:\n                screen = getattr(exc, \"screen\", None)\n                stacktrace = getattr(exc, \"stacktrace\", None)\n            if time.monotonic() > end_time:\n                break\n            time.sleep(self._poll)\n>       raise TimeoutException(message, screen, stacktrace)\nE       selenium.common.exceptions.TimeoutException: Message:\n\n../local/lib/python3.12/site-packages/selenium/webdriver/support/wait.py:105: TimeoutException",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ {
+    "name" : "browser",
+    "time" : {
+      "start" : 1738434412623,
+      "stop" : 1738434412941,
+      "duration" : 318
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  }, {
+    "name" : "set_allure_labels",
+    "time" : {
+      "start" : 1738434412941,
+      "stop" : 1738434412941,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  }, {
+    "name" : "setup",
+    "time" : {
+      "start" : 1738434412941,
+      "stop" : 1738434412942,
+      "duration" : 1
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  } ],
+  "testStage" : {
+    "status" : "broken",
+    "statusMessage" : "selenium.common.exceptions.TimeoutException: Message:",
+    "statusTrace" : "self = <tests.test_im_reg_auth.TestImAuthReg object at 0x7f234dd10b00>\nphone = '79022779866', error = ''\n\n    @allure.story('5.Авторизация по SMS. Проверка валидации')\n    @allure.title('Авторизация по SMS. Проверка валидации')\n    @pytest.mark.parametrize(\"phone, error\", [\n            ('790227798', 'Введите оставшиеся цифры'),\n            ('79022779866', '')])\n    def test_auth_sms_valid_phone_field(self, phone, error):\n>       self.auth_page.open_auth_page()\n\ntests/test_im_reg_auth.py:83: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \npages/authpage.py:52: in open_auth_page\n    button_submit = self.wait_for_clickable_element('//button[text()=\"Применить\"]')\npages/authpage.py:28: in wait_for_clickable_element\n    return WebDriverWait(self.browser, timeout).until(\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nself = <selenium.webdriver.support.wait.WebDriverWait (session=\"c427ae627ff36ad0220fc15c86584b29\")>\nmethod = <function element_to_be_clickable.<locals>._predicate at 0x7f234dd5aa20>\nmessage = ''\n\n    def until(self, method: Callable[[D], Union[Literal[False], T]], message: str = \"\") -> T:\n        \"\"\"Calls the method provided with the driver as an argument until the \\\n        return value does not evaluate to ``False``.\n    \n        :param method: callable(WebDriver)\n        :param message: optional message for :exc:`TimeoutException`\n        :returns: the result of the last call to `method`\n        :raises: :exc:`selenium.common.exceptions.TimeoutException` if timeout occurs\n        \"\"\"\n        screen = None\n        stacktrace = None\n    \n        end_time = time.monotonic() + self._timeout\n        while True:\n            try:\n                value = method(self._driver)\n                if value:\n                    return value\n            except self._ignored_exceptions as exc:\n                screen = getattr(exc, \"screen\", None)\n                stacktrace = getattr(exc, \"stacktrace\", None)\n            if time.monotonic() > end_time:\n                break\n            time.sleep(self._poll)\n>       raise TimeoutException(message, screen, stacktrace)\nE       selenium.common.exceptions.TimeoutException: Message:\n\n../local/lib/python3.12/site-packages/selenium/webdriver/support/wait.py:105: TimeoutException",
+    "steps" : [ {
+      "name" : "Открыть страницу авторизации",
+      "time" : {
+        "start" : 1738434412942,
+        "stop" : 1738434423229,
+        "duration" : 10287
+      },
+      "status" : "broken",
+      "statusMessage" : "selenium.common.exceptions.TimeoutException: Message: \n\n",
+      "statusTrace" : "  File \"/usr/workspace/pages/authpage.py\", line 52, in open_auth_page\n    button_submit = self.wait_for_clickable_element('//button[text()=\"Применить\"]')\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/workspace/pages/authpage.py\", line 28, in wait_for_clickable_element\n    return WebDriverWait(self.browser, timeout).until(\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.12/site-packages/selenium/webdriver/support/wait.py\", line 105, in until\n    raise TimeoutException(message, screen, stacktrace)\n",
+      "steps" : [ ],
+      "attachments" : [ {
+        "uid" : "41aa4ad6a6fa1e6a",
+        "name" : "Ошибка ожидания кликабельного элемента: //button[text()=\"Применить\"]",
+        "source" : "41aa4ad6a6fa1e6a.txt",
+        "type" : "text/plain",
+        "size" : 10
+      } ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "hasContent" : true,
+      "attachmentsCount" : 1,
+      "shouldDisplayMessage" : true
+    } ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 1,
+    "hasContent" : true,
+    "attachmentsCount" : 1,
+    "shouldDisplayMessage" : true
+  },
+  "afterStages" : [ {
+    "name" : "browser::0",
+    "time" : {
+      "start" : 1738434423241,
+      "stop" : 1738434423296,
+      "duration" : 55
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  } ],
+  "labels" : [ {
+    "name" : "parentSuite",
+    "value" : "ИМ - Регистрация/авторизация"
+  }, {
+    "name" : "suite",
+    "value" : "ИМ - Регистрация/авторизация"
+  }, {
+    "name" : "feature",
+    "value" : "ИМ - Регистрация/авторизация"
+  }, {
+    "name" : "story",
+    "value" : "5.Авторизация по SMS. Проверка валидации"
+  }, {
+    "name" : "subSuite",
+    "value" : "TestImAuthReg"
+  }, {
+    "name" : "host",
+    "value" : "f4af20bfbdea"
+  }, {
+    "name" : "thread",
+    "value" : "1-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "tests.test_im_reg_auth"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ {
+    "name" : "error",
+    "value" : "''"
+  }, {
+    "name" : "phone",
+    "value" : "'79022779866'"
+  } ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ {
+      "name" : "Test defects",
+      "matchedStatuses" : [ ],
+      "flaky" : false
+    } ],
+    "tags" : [ ]
+  },
+  "source" : "2463b5ff995267e.json",
+  "parameterValues" : [ "''", "'79022779866'" ]
+}

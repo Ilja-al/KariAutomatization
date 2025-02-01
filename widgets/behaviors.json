@@ -1,81 +1,15 @@
 {
-  "total" : 7,
+  "total" : 1,
   "items" : [ {
-    "uid" : "561f1be97d0c58379a182895dc0bd6ed",
-    "name" : "1.Регистрация. Переход к форме заполнения данных нового аккаунта",
+    "uid" : "3741cbdb89112d35a42fdf96a3c12d65",
+    "name" : "ИМ - Регистрация/авторизация",
     "statistic" : {
-      "failed" : 0,
-      "broken" : 5,
-      "skipped" : 0,
-      "passed" : 0,
-      "unknown" : 0,
-      "total" : 5
-    }
-  }, {
-    "uid" : "8e67d4fbd32c7fa3c796fed023e3ebfd",
-    "name" : "2.Авторизация. Валидация поля Телефон/E-mail",
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 5,
-      "skipped" : 0,
-      "passed" : 0,
-      "unknown" : 0,
-      "total" : 5
-    }
-  }, {
-    "uid" : "552da81c4f6a0e30c6803679a392dcfe",
-    "name" : "3.Авторизация. Проверка авторизации",
-    "statistic" : {
-      "failed" : 0,
+      "failed" : 4,
       "broken" : 3,
       "skipped" : 0,
       "passed" : 0,
       "unknown" : 0,
-      "total" : 3
-    }
-  }, {
-    "uid" : "193fec8087be939e0d562bb1aeb8604e",
-    "name" : "5.Авторизация по SMS. Проверка валидации",
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 2,
-      "skipped" : 0,
-      "passed" : 0,
-      "unknown" : 0,
-      "total" : 2
-    }
-  }, {
-    "uid" : "7b260bdf7b3cbff41c14ee1c1d58942f",
-    "name" : "4.Авторизация. Проверка переключения между способами входа",
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 1,
-      "skipped" : 0,
-      "passed" : 0,
-      "unknown" : 0,
-      "total" : 1
-    }
-  }, {
-    "uid" : "f0269fcb4ada3060e074c45cb4908015",
-    "name" : "6.Yandex и ВК ID. Отображение кнопок входа",
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 1,
-      "skipped" : 0,
-      "passed" : 0,
-      "unknown" : 0,
-      "total" : 1
-    }
-  }, {
-    "uid" : "ef1009f8b648074135f40e6ce779c59d",
-    "name" : "7.Восстановление пароля пользователя",
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 1,
-      "skipped" : 0,
-      "passed" : 0,
-      "unknown" : 0,
-      "total" : 1
+      "total" : 7
     }
   } ]
 }

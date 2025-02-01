@@ -1,180 +1,180 @@
 [ {
-  "uid" : "94ae57b824bd168a",
-  "name" : "Ввод различных данных и проверка авторизации ",
-  "time" : {
-    "start" : 1738434034860,
-    "stop" : 1738434034860,
-    "duration" : 0
-  },
-  "status" : "broken",
-  "severity" : "normal"
-}, {
-  "uid" : "5f1fc950c240e6ee",
-  "name" : "Ввод различных данных в поле логина и проверка валидации",
-  "time" : {
-    "start" : 1738434034423,
-    "stop" : 1738434034423,
-    "duration" : 0
-  },
-  "status" : "broken",
-  "severity" : "normal"
-}, {
-  "uid" : "f5596aa45ebcc107",
-  "name" : "Ввод различных данных в поле логина и проверка валидации",
-  "time" : {
-    "start" : 1738434033761,
-    "stop" : 1738434033761,
-    "duration" : 0
-  },
-  "status" : "broken",
-  "severity" : "normal"
-}, {
-  "uid" : "fa0481fcedd812dc",
-  "name" : "Ввод различных данных в поле логина и проверка валидации",
-  "time" : {
-    "start" : 1738434034198,
-    "stop" : 1738434034198,
-    "duration" : 0
-  },
-  "status" : "broken",
-  "severity" : "normal"
-}, {
-  "uid" : "d4f1d7c38c63f501",
-  "name" : "Ввести в поле ввода номера символы и буквы",
-  "time" : {
-    "start" : 1738434032874,
-    "stop" : 1738434032874,
-    "duration" : 0
-  },
-  "status" : "broken",
-  "severity" : "normal"
-}, {
-  "uid" : "84ff2152fad13c3a",
+  "uid" : "2fdff178a9f0643f",
   "name" : "Ввести номер телефона не зарегистрированного пользователя и нажать \"Получить код\"",
   "time" : {
-    "start" : 1738434033324,
-    "stop" : 1738434033324,
-    "duration" : 0
+    "start" : 1738434306793,
+    "stop" : 1738434321379,
+    "duration" : 14586
   },
   "status" : "broken",
   "severity" : "normal"
 }, {
-  "uid" : "fc68f6892e3feadd",
-  "name" : "Авторизация по SMS. Проверка валидации",
-  "time" : {
-    "start" : 1738434035738,
-    "stop" : 1738434035738,
-    "duration" : 0
-  },
-  "status" : "broken",
-  "severity" : "normal"
-}, {
-  "uid" : "608731a5c0f27fc5",
-  "name" : "Ввод различных данных и проверка авторизации ",
-  "time" : {
-    "start" : 1738434035078,
-    "stop" : 1738434035078,
-    "duration" : 0
-  },
-  "status" : "broken",
-  "severity" : "normal"
-}, {
-  "uid" : "112335c682f3d991",
-  "name" : "Нажать кнопку \"Создать аккаунт\"",
-  "time" : {
-    "start" : 1738434032553,
-    "stop" : 1738434032553,
-    "duration" : 0
-  },
-  "status" : "broken",
-  "severity" : "normal"
-}, {
-  "uid" : "e1f5eccb69d72fe7",
-  "name" : "Ввести в поле ввода номера символы и буквы",
-  "time" : {
-    "start" : 1738434033105,
-    "stop" : 1738434033105,
-    "duration" : 0
-  },
-  "status" : "broken",
-  "severity" : "normal"
-}, {
-  "uid" : "25c2b54015cd34a2",
-  "name" : "Ввод различных данных и проверка авторизации ",
-  "time" : {
-    "start" : 1738434035298,
-    "stop" : 1738434035298,
-    "duration" : 0
-  },
-  "status" : "broken",
-  "severity" : "normal"
-}, {
-  "uid" : "1dfd367f5984b369",
-  "name" : "Авторизация по SMS. Проверка валидации",
-  "time" : {
-    "start" : 1738434035958,
-    "stop" : 1738434035958,
-    "duration" : 0
-  },
-  "status" : "broken",
-  "severity" : "normal"
-}, {
-  "uid" : "695a85b6b9704adc",
-  "name" : "Авторизация. Проверка переключения между способами входа",
-  "time" : {
-    "start" : 1738434035519,
-    "stop" : 1738434035519,
-    "duration" : 0
-  },
-  "status" : "broken",
-  "severity" : "normal"
-}, {
-  "uid" : "38e315d17dbadd54",
-  "name" : "Ввести номер телефона зарегестрированного пользователя и нажать кнопку \"Получить код\"",
-  "time" : {
-    "start" : 1738434033542,
-    "stop" : 1738434033542,
-    "duration" : 0
-  },
-  "status" : "broken",
-  "severity" : "normal"
-}, {
-  "uid" : "1e1963b2bc35353f",
-  "name" : "Восстановление пароля пользователя",
-  "time" : {
-    "start" : 1738434036396,
-    "stop" : 1738434036396,
-    "duration" : 0
-  },
-  "status" : "broken",
-  "severity" : "normal"
-}, {
-  "uid" : "4604fed446b1e844",
+  "uid" : "23569d13b069ab9f",
   "name" : "Yandex и ВК ID. Отображение кнопок входа",
   "time" : {
-    "start" : 1738434036178,
-    "stop" : 1738434036178,
-    "duration" : 0
+    "start" : 1738434423615,
+    "stop" : 1738434433906,
+    "duration" : 10291
   },
   "status" : "broken",
   "severity" : "normal"
 }, {
-  "uid" : "2d4a3d149d35f051",
-  "name" : "Ввод различных данных в поле логина и проверка валидации",
+  "uid" : "2463b5ff995267e",
+  "name" : "Авторизация по SMS. Проверка валидации",
   "time" : {
-    "start" : 1738434034641,
-    "stop" : 1738434034641,
-    "duration" : 0
+    "start" : 1738434412942,
+    "stop" : 1738434423229,
+    "duration" : 10287
   },
   "status" : "broken",
   "severity" : "normal"
 }, {
-  "uid" : "de1e141bb270f9b0",
+  "uid" : "6d7f3b10e9876193",
+  "name" : "Ввод различных данных и проверка авторизации ",
+  "time" : {
+    "start" : 1738434382476,
+    "stop" : 1738434382481,
+    "duration" : 5
+  },
+  "status" : "failed",
+  "severity" : "normal"
+}, {
+  "uid" : "a7204c2102500f56",
+  "name" : "Ввести в поле ввода номера символы и буквы",
+  "time" : {
+    "start" : 1738434276738,
+    "stop" : 1738434291847,
+    "duration" : 15109
+  },
+  "status" : "broken",
+  "severity" : "normal"
+}, {
+  "uid" : "cd2afe24a8cebad4",
+  "name" : "Ввести номер телефона зарегестрированного пользователя и нажать кнопку \"Получить код\"",
+  "time" : {
+    "start" : 1738434321750,
+    "stop" : 1738434321755,
+    "duration" : 5
+  },
+  "status" : "failed",
+  "severity" : "normal"
+}, {
+  "uid" : "c3414fac7c4e8fc",
+  "name" : "Ввод различных данных и проверка авторизации ",
+  "time" : {
+    "start" : 1738434382861,
+    "stop" : 1738434396964,
+    "duration" : 14103
+  },
+  "status" : "broken",
+  "severity" : "normal"
+}, {
+  "uid" : "d26e18af06fcd8a5",
   "name" : "Ввод различных данных в поле логина и проверка валидации",
   "time" : {
-    "start" : 1738434033979,
-    "stop" : 1738434033979,
-    "duration" : 0
+    "start" : 1738434337290,
+    "stop" : 1738434337294,
+    "duration" : 4
+  },
+  "status" : "failed",
+  "severity" : "normal"
+}, {
+  "uid" : "dda3cc4695624f10",
+  "name" : "Ввод различных данных в поле логина и проверка валидации",
+  "time" : {
+    "start" : 1738434352582,
+    "stop" : 1738434366392,
+    "duration" : 13810
+  },
+  "status" : "broken",
+  "severity" : "normal"
+}, {
+  "uid" : "27ba139da64c9415",
+  "name" : "Авторизация по SMS. Проверка валидации",
+  "time" : {
+    "start" : 1738434397745,
+    "stop" : 1738434412555,
+    "duration" : 14810
+  },
+  "status" : "broken",
+  "severity" : "normal"
+}, {
+  "uid" : "3162be1aaa70c2b6",
+  "name" : "Нажать кнопку \"Создать аккаунт\"",
+  "time" : {
+    "start" : 1738434261687,
+    "stop" : 1738434276290,
+    "duration" : 14603
+  },
+  "status" : "broken",
+  "severity" : "normal"
+}, {
+  "uid" : "a4fe62a0abff240b",
+  "name" : "Восстановление пароля пользователя",
+  "time" : {
+    "start" : 1738434434298,
+    "stop" : 1738434444576,
+    "duration" : 10278
+  },
+  "status" : "broken",
+  "severity" : "normal"
+}, {
+  "uid" : "7d5545064a7164fe",
+  "name" : "Ввод различных данных и проверка авторизации ",
+  "time" : {
+    "start" : 1738434382086,
+    "stop" : 1738434382090,
+    "duration" : 4
+  },
+  "status" : "failed",
+  "severity" : "normal"
+}, {
+  "uid" : "b729199975771faa",
+  "name" : "Ввести в поле ввода номера символы и буквы",
+  "time" : {
+    "start" : 1738434292232,
+    "stop" : 1738434306409,
+    "duration" : 14177
+  },
+  "status" : "broken",
+  "severity" : "normal"
+}, {
+  "uid" : "ea536b71a02a3112",
+  "name" : "Ввод различных данных в поле логина и проверка валидации",
+  "time" : {
+    "start" : 1738434337677,
+    "stop" : 1738434352200,
+    "duration" : 14523
+  },
+  "status" : "broken",
+  "severity" : "normal"
+}, {
+  "uid" : "12b9c5f8860cf6a4",
+  "name" : "Авторизация. Проверка переключения между способами входа",
+  "time" : {
+    "start" : 1738434397355,
+    "stop" : 1738434397360,
+    "duration" : 5
+  },
+  "status" : "failed",
+  "severity" : "normal"
+}, {
+  "uid" : "96db0641744d7d9c",
+  "name" : "Ввод различных данных в поле логина и проверка валидации",
+  "time" : {
+    "start" : 1738434366784,
+    "stop" : 1738434381706,
+    "duration" : 14922
+  },
+  "status" : "broken",
+  "severity" : "normal"
+}, {
+  "uid" : "6912a2a1f76942d7",
+  "name" : "Ввод различных данных в поле логина и проверка валидации",
+  "time" : {
+    "start" : 1738434322135,
+    "stop" : 1738434336905,
+    "duration" : 14770
   },
   "status" : "broken",
   "severity" : "normal"
