@@ -1,2 +1,2 @@
 "Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
-"broken","Sat Feb 01 19:22:15 GMT 2025","Sat Feb 01 19:22:49 GMT 2025","34355","ИМ - Регистрация/авторизация","ИМ - Регистрация/авторизация","TestImAuthReg","","","Нажать кнопку ""Создать аккаунт""",""
+"broken","Sat Feb 01 19:30:31 GMT 2025","Sat Feb 01 19:31:05 GMT 2025","34116","ИМ - Регистрация/авторизация","ИМ - Регистрация/авторизация","TestImAuthReg","","","Нажать кнопку ""Создать аккаунт""",""
