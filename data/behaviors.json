@@ -6,13 +6,13 @@
       "name" : "1.Регистрация. Переход к форме заполнения данных нового аккаунта",
       "children" : [ {
         "name" : "Нажать кнопку \"Создать аккаунт\"",
-        "uid" : "8ad4f1f9225d660",
+        "uid" : "b108fa474326f05f",
         "parentUid" : "44dc69572dfd0325cdd54356d39f8d63",
         "status" : "broken",
         "time" : {
-          "start" : 1738436956422,
-          "stop" : 1738436971546,
-          "duration" : 15124
+          "start" : 1738437229839,
+          "stop" : 1738437244559,
+          "duration" : 14720
         },
         "flaky" : false,
         "newFailed" : false,

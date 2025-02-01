@@ -1,10 +1,10 @@
 [ {
-  "uid" : "8ad4f1f9225d660",
+  "uid" : "b108fa474326f05f",
   "name" : "Нажать кнопку \"Создать аккаунт\"",
   "time" : {
-    "start" : 1738436956422,
-    "stop" : 1738436971546,
-    "duration" : 15124
+    "start" : 1738437229839,
+    "stop" : 1738437244559,
+    "duration" : 14720
   },
   "status" : "broken",
   "severity" : "normal"

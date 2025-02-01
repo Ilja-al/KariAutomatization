@@ -9,13 +9,13 @@
       "total" : 1
     },
     "items" : [ {
-      "uid" : "8ad4f1f9225d660",
+      "uid" : "b108fa474326f05f",
       "status" : "broken",
       "statusDetails" : "selenium.common.exceptions.TimeoutException: Message:",
       "time" : {
-        "start" : 1738436956422,
-        "stop" : 1738436971546,
-        "duration" : 15124
+        "start" : 1738437229839,
+        "stop" : 1738437244559,
+        "duration" : 14720
       }
     } ]
   }
