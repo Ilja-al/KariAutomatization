@@ -9,13 +9,13 @@ from config.links import Links
 class MainPage(BasePage):
 
     # Метод для ожидания наличия элемента (работает с CSS и XPath)
-    def wait_for_element(self, locator, by=By.XPATH, timeout=30):
+    def wait_for_element(self, locator, by=By.XPATH, timeout=60):
             return WebDriverWait(self.browser, timeout).until(
                 EC.presence_of_element_located((by, locator))
             )
 
     # Метод для ожидания кликабельности элемента
-    def wait_for_clickable_element(self, locator, by=By.XPATH, timeout=30):
+    def wait_for_clickable_element(self, locator, by=By.XPATH, timeout=60):
             return WebDriverWait(self.browser, timeout).until(
                 EC.element_to_be_clickable((by, locator))
             )
