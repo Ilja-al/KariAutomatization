@@ -1,26 +1,26 @@
 {
   "uid" : "ab17fc5a4eb3bca4b216b548c7f9fcbc",
   "children" : [ {
-    "name" : "171ca1bb2f2d",
+    "name" : "5915b9958920",
     "children" : [ {
       "name" : "1-MainThread",
       "children" : [ {
         "name" : "Нажать кнопку \"Создать аккаунт\"",
-        "uid" : "b108fa474326f05f",
-        "parentUid" : "5237f6592d843fc8b5e34a02d9c39f3c",
+        "uid" : "89ed71701365af0e",
+        "parentUid" : "37f4beded526bc192cf135f5e83e03ec",
         "status" : "broken",
         "time" : {
-          "start" : 1738437229839,
-          "stop" : 1738437244559,
-          "duration" : 14720
+          "start" : 1738437735197,
+          "stop" : 1738437769552,
+          "duration" : 34355
         },
         "flaky" : false,
         "newFailed" : false,
         "parameters" : [ ]
       } ],
-      "uid" : "5237f6592d843fc8b5e34a02d9c39f3c"
+      "uid" : "37f4beded526bc192cf135f5e83e03ec"
     } ],
-    "uid" : "5b3c85a57b2d409f0a8361d059f389da"
+    "uid" : "ac422de84035835d28fe90398baa7b4c"
   } ],
   "name" : "timeline"
 }

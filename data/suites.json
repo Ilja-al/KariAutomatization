@@ -8,13 +8,13 @@
         "name" : "TestImAuthReg",
         "children" : [ {
           "name" : "Нажать кнопку \"Создать аккаунт\"",
-          "uid" : "b108fa474326f05f",
+          "uid" : "89ed71701365af0e",
           "parentUid" : "b0c589e60cef44429e3208481a81bd7b",
           "status" : "broken",
           "time" : {
-            "start" : 1738437229839,
-            "stop" : 1738437244559,
-            "duration" : 14720
+            "start" : 1738437735197,
+            "stop" : 1738437769552,
+            "duration" : 34355
           },
           "flaky" : false,
           "newFailed" : false,
