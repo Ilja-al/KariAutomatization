@@ -1,11 +1,11 @@
 {
   "total" : 1,
   "items" : [ {
-    "uid" : "fd652d380ddcde4e84639f008bc4ad45",
-    "name" : "ИМ - Регистрация/авторизация",
+    "uid" : "e387fa4bb326b54ea8c19c2822aba374",
+    "name" : "tests",
     "statistic" : {
-      "failed" : 8,
-      "broken" : 10,
+      "failed" : 0,
+      "broken" : 18,
       "skipped" : 0,
       "passed" : 0,
       "unknown" : 0,
