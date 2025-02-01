@@ -1,26 +1,5 @@
 {
   "uid" : "4b4757e66a1912dae1a509f688f20b0f",
-  "children" : [ {
-    "name" : "Product defects",
-    "children" : [ {
-      "name" : "AssertionError: Не удалось открыть сайт",
-      "children" : [ {
-        "name" : "Нажать кнопку \"Создать аккаунт\"",
-        "uid" : "e39e963a22beb803",
-        "parentUid" : "6a2018de09076da38af7a6de57547b2d",
-        "status" : "failed",
-        "time" : {
-          "start" : 1738435756915,
-          "stop" : 1738435756920,
-          "duration" : 5
-        },
-        "flaky" : false,
-        "newFailed" : false,
-        "parameters" : [ ]
-      } ],
-      "uid" : "6a2018de09076da38af7a6de57547b2d"
-    } ],
-    "uid" : "8fb3a91ba5aaf9de24cc8a92edc82b5d"
-  } ],
+  "children" : [ ],
   "name" : "categories"
 }

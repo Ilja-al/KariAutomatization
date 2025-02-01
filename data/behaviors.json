@@ -1,26 +1,5 @@
 {
   "uid" : "b1a8273437954620fa374b796ffaacdd",
-  "children" : [ {
-    "name" : "ИМ - Регистрация/авторизация",
-    "children" : [ {
-      "name" : "1.Регистрация. Переход к форме заполнения данных нового аккаунта",
-      "children" : [ {
-        "name" : "Нажать кнопку \"Создать аккаунт\"",
-        "uid" : "e39e963a22beb803",
-        "parentUid" : "44dc69572dfd0325cdd54356d39f8d63",
-        "status" : "failed",
-        "time" : {
-          "start" : 1738435756915,
-          "stop" : 1738435756920,
-          "duration" : 5
-        },
-        "flaky" : false,
-        "newFailed" : false,
-        "parameters" : [ ]
-      } ],
-      "uid" : "44dc69572dfd0325cdd54356d39f8d63"
-    } ],
-    "uid" : "3741cbdb89112d35a42fdf96a3c12d65"
-  } ],
+  "children" : [ ],
   "name" : "behaviors"
 }

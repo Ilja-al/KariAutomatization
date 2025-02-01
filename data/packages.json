@@ -1,22 +1,5 @@
 {
   "uid" : "83edc06c07f9ae9e47eb6dd1b683e4e2",
-  "children" : [ {
-    "name" : "tests.test_im_reg_auth",
-    "children" : [ {
-      "name" : "Нажать кнопку \"Создать аккаунт\"",
-      "uid" : "e39e963a22beb803",
-      "parentUid" : "0611c6df9968a4c08f1e778a90e9e792",
-      "status" : "failed",
-      "time" : {
-        "start" : 1738435756915,
-        "stop" : 1738435756920,
-        "duration" : 5
-      },
-      "flaky" : false,
-      "newFailed" : false,
-      "parameters" : [ ]
-    } ],
-    "uid" : "tests.test_im_reg_auth"
-  } ],
+  "children" : [ ],
   "name" : "packages"
 }

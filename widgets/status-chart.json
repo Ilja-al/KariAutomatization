@@ -1,11 +1,1 @@
-[ {
-  "uid" : "e39e963a22beb803",
-  "name" : "Нажать кнопку \"Создать аккаунт\"",
-  "time" : {
-    "start" : 1738435756915,
-    "stop" : 1738435756920,
-    "duration" : 5
-  },
-  "status" : "failed",
-  "severity" : "normal"
-} ]
+[ ]
