@@ -9,13 +9,13 @@ from config.links import Links
 class MainPage(BasePage):
 
     # Метод для ожидания наличия элемента (работает с CSS и XPath)
-    def wait_for_element(self, locator, by=By.XPATH, timeout=10):
+    def wait_for_element(self, locator, by=By.XPATH, timeout=30):
             return WebDriverWait(self.browser, timeout).until(
                 EC.presence_of_element_located((by, locator))
             )
 
     # Метод для ожидания кликабельности элемента
-    def wait_for_clickable_element(self, locator, by=By.XPATH, timeout=10):
+    def wait_for_clickable_element(self, locator, by=By.XPATH, timeout=30):
             return WebDriverWait(self.browser, timeout).until(
                 EC.element_to_be_clickable((by, locator))
             )
@@ -34,14 +34,16 @@ class MainPage(BasePage):
             # Печатаем текущий URL после загрузки страницы
             print(f"Текущий URL: {self.browser.current_url}")
             # Ожидаем, что в URL будет содержаться `page_url`
-            WebDriverWait(self.browser, 10).until(
+            WebDriverWait(self.browser, 30).until(
                 EC.url_contains(page_url)
             )
             # Печатаем, если сайт все-таки не открылся как нужно
             if page_url not in self.browser.current_url:
                 print(f"Ошибка: Ожидался URL: {page_url}, но фактический URL: {self.browser.current_url}")
             assert page_url in self.browser.current_url, 'Не удалось открыть сайт'
+            print("Ожидание загрузки кнопки")
             button_submit = self.wait_for_clickable_element('//button[text()="Применить"]')
+            print("Элемент найден, кликаем по кнопке...")
             button_submit.click()
 
     def click_login_icon(self): # Иконка входа
