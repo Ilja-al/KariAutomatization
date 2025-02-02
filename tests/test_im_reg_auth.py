@@ -1,7 +1,7 @@
 import allure
 import pytest
 from pages.mainpage import MainPage
-from pages.auth_page import AuthPage  # Предполагаю, что у вас есть такой класс для работы со страницей авторизации/регистрации
+#from pages.auth_page import AuthPage  # Предполагаю, что у вас есть такой класс для работы со страницей авторизации/регистрации
 
 
 @allure.story('1.Регистрация. Переход к форме заполнения данных нового аккаунта')
@@ -9,7 +9,7 @@ from pages.auth_page import AuthPage  # Предполагаю, что у вас
 @pytest.mark.usefixtures("browser")
 def test_reg_form_check(browser):  # Нажать кнопку "Создать аккаунт"
     main_page = MainPage(browser)
-    auth_page = AuthPage(browser)
+    #auth_page = AuthPage(browser)
 
     main_page.open_main_page("https://yourwebsite.com")  # Замените на актуальный URL вашего сайта
     main_page.click_login_icon()
