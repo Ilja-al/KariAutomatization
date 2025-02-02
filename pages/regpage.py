@@ -8,7 +8,9 @@ from base.base_page import BasePage
 from config.links import Links
 
 
+
 class RegPage(BasePage):
+
 
     # Метод для добавления ошибки в Allure-отчёт
     def attach_error(self, title, message):

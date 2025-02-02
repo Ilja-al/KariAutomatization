@@ -12,6 +12,8 @@ def browser(request):
     options.add_argument('--disable-gpu')  # Отключение GPU
     options.add_argument('--disable-dev-shm-usage')  # Отключает использование общего разделяемого памяти
     options.add_argument('--no-sandbox')  # Полезно для Docker
+    #options.add_argument('--proxy-server=http://127.0.0.1:8080')  # Прокси на 8080 порт
+    #options.add_argument('--ignore-certificate-errors')  # Игнорировать ошибки сертификатов
     options.add_argument('--window-size=1920,1080')  # Размер окна
     options.page_load_strategy = 'none'  # Отключаем ожидание полной загрузки страницы
     # browser.maximize_window()  # Разворачивание на полный экран
@@ -20,6 +22,12 @@ def browser(request):
     request.cls.browser = browser
     yield browser
     browser.quit()  # Гарантированное закрытие браузера
+
+#def setup_browser_with_proxy():
+    #options = Options()
+    #options.add_argument('--proxy-server=http://127.0.0.1:8080')  # Прокси-сервер, через который будет проходить трафик
+    #driver = webdriver.Chrome(options=options)
+    #return driver
 
 @pytest.fixture(autouse=True)
 def set_allure_labels():

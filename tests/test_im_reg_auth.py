@@ -4,7 +4,6 @@ import pytest
 
 class TestImAuthReg(BaseTest):
 
-
     @allure.story('1.Регистрация. Переход к форме заполнения данных нового аккаунта')
     @allure.title('Нажать кнопку "Создать аккаунт"')
     def test_reg_form_check(self): #Нажать кнопку "Создать аккаунт"
@@ -13,7 +12,7 @@ class TestImAuthReg(BaseTest):
         self.main_page.click_enter_registration()
         self.auth_page.click_create_button()
 
-'''
+
     @allure.story('1.Регистрация. Переход к форме заполнения данных нового аккаунта')
     @allure.title('Ввести в поле ввода номера символы и буквы')
     @pytest.mark.parametrize("phone, error", [
@@ -100,4 +99,3 @@ class TestImAuthReg(BaseTest):
         self.auth_page.input_reg_tel(phone_number)
         self.auth_page.enter_sms_code(phone_number, mongo_client)
         self.auth_page.change_password()
-'''
