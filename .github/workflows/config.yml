@@ -19,7 +19,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v3
       - name: Установить зависимости
         run: |
           sudo apt-get update
@@ -27,7 +27,7 @@ jobs:
           pip install -r requirements.txt
       - name: Скачать и установить ChromeDriver
         run: |
-          CHROMEDRIVER_VERSION=$(curl -s "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_CHROMEDRIVER_URL" | grep -oP 'chromedriver_linux64 zips' | sed 's/"//g;s/ /_/g;s/ /_/g;s/,//g;s/@//g;s/:/ /g;s/?=/'g;s/">//'g;s/\..$/ig
+          CHROMEDRIVER_VERSION=$(curl -s "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_CHROMEDRIVER_URL" | grep -Po 'chromedriver_linux64 zips' | sed 's/"//g;s/ /_/g;s/ /_/g;s/,//g;s/@//g;s/:/ /g;s/?=/'g;s/">//'g;s/\..$/ig
           curl -sSL "https://chromedriver.storage.googleapis.com/${CHROMEDRIVER_VERSION}/chromedriver_linux64.zip" -o chromedriver_linux64.zip
           unzip chromedriver_linux64.zip
           chmod +x chromedriver
