@@ -27,17 +27,19 @@ class MainPage:
             else:
                 print(f"Сайт успешно открыт: {self.browser.current_url}")
 
-    # Метод для нажатия на иконку входа
-    def click_login_icon(self):
-        with allure.step('Нажать иконку входа'):
-            login_icon = self.wait_for_clickable_element(MainPage.LOGIN_ICON_LOCATOR)
-            login_icon.click()
+   def click_login_icon(self): # Иконка входа
+    with allure.step('Нажать иконку входа'):
+        print("Поиск иконки")    
+        login_icon = self.wait_for_clickable_element('//button[@class="css-1svjifm e2cllgv3"]')
+        print("Нажатие на иконку")    
+        login_icon.click()
 
-    # Метод для нажатия на кнопку "Войти или зарегистрироваться"
-    def click_enter_registration(self):
-        with allure.step('Нажать "Войти или зарегистрироваться"'):
-            enter_registration = self.wait_for_clickable_element(MainPage.ENTER_REGISTRATION_BUTTON_LOCATOR)
-            enter_registration.click()
+def click_enter_registration(self): # войти или зарегистрироваться
+    with allure.step('Нажать "Войти или зарегистрироваться"'):
+        print("Поиск кнопки Войти")     
+        enter_registration = self.wait_for_clickable_element('//a[@class="css-oc613h e1bfq77c24"]')
+        print("Нажатие кнопки Войти")  
+        enter_registration.click()
 
     # Общий метод для ожидания и проверки видимости элемента
     def check_and_wait_for_element(self, locator, by=By.XPATH, timeout=60):
