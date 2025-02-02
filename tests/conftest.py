@@ -5,8 +5,8 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from config.data import Data
 
-@pytest.fixture(scope='function', autouse=True)
-def browser(request):
+@pytest.fixture(scope='module')
+def browser():
     options = Options()
     options.add_argument('--headless')  # Безголовый режим
     options.add_argument('--disable-gpu')  # Отключение GPU
@@ -17,7 +17,7 @@ def browser(request):
     # browser.maximize_window()  # Разворачивание на полный экран
     # browser.implicitly_wait(5)  # Неявное ожидание 5 секунд
     browser = webdriver.Chrome(options=options)  # Запуск браузера
-    request.cls.browser = browser
+    #request.cls.browser = browser
     yield browser
     browser.quit()  # Гарантированное закрытие браузера
 
