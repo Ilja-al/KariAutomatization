@@ -25,7 +25,8 @@ jobs:
         with:
           ref: gh-pages
           path: ./.github/gh-pages
-
+      - name: Check site availability
+        run: curl -I https://test-not-prod.kari.com/
       - name: Run UI-tests via docker-compose
         env:
           MONGO_URI: ${{ secrets.MONGO_URI }}
