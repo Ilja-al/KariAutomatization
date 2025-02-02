@@ -18,22 +18,20 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    services:
-      chromedriver:
-        image: gcr.io/chromium-ci/builder:latest
     steps:
-      - uses: actions/checkout@v3
-      - name: Установить Chromedriver
-        run: |
-          wget https://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION/chromedriver_linux64.zip
-          unzip chromedriver_linux64.zip
-          chmod +x chromedriver
-          mv -f chromedriver /usr/local/bin/
+      - uses: actions/checkout@v1
       - name: Установить зависимости
         run: |
           sudo apt-get update
           sudo apt-get install -y xvfb
           pip install -r requirements.txt
+      - name: Скачать и установить ChromeDriver
+        run: |
+          CHROMEDRIVER_VERSION=$(curl -s "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_CHROMEDRIVER_URL" | grep -oP 'chromedriver_linux64 zips' | sed 's/"//g;s/ /_/g;s/ /_/g;s/,//g;s/@//g;s/:/ /g;s/?=/'g;s/">//'g;s/\..$/ig
+          curl -sSL "https://chromedriver.storage.googleapis.com/${CHROMEDRIVER_VERSION}/chromedriver_linux64.zip" -o chromedriver_linux64.zip
+          unzip chromedriver_linux64.zip
+          chmod +x chromedriver
+          mv -f chromedriver /usr/local/bin/
       - name: Запустить тесты
         env:
           DISPLAY: :99
