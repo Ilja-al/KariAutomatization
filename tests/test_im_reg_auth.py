@@ -11,7 +11,7 @@ def test_reg_form_check(browser):  # Нажать кнопку "Создать �
     main_page = MainPage(browser)
     #auth_page = AuthPage(browser)
 
-    main_page.open_main_page("https://yourwebsite.com")  # Замените на актуальный URL вашего сайта
+    main_page.open_main_page("https://test-not-prod.kari.com/")  # Замените на актуальный URL вашего сайта
     main_page.click_login_icon()
     main_page.click_enter_registration()
     auth_page.click_create_button()
