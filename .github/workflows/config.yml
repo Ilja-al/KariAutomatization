@@ -1,4 +1,4 @@
-name: IM Tests
+name: IM
 
 on:
   workflow_dispatch:
