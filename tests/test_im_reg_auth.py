@@ -1,17 +1,20 @@
-from base.base_test import BaseTest
 import allure
 import pytest
+from pages.mainpage import MainPage
+from pages.auth_page import AuthPage  # Предполагаю, что у вас есть такой класс для работы со страницей авторизации/регистрации
 
-class TestImAuthReg(BaseTest):
 
+@allure.story('1.Регистрация. Переход к форме заполнения данных нового аккаунта')
+@allure.title('Нажать кнопку "Создать аккаунт"')
+@pytest.mark.usefixtures("browser")
+def test_reg_form_check(browser):  # Нажать кнопку "Создать аккаунт"
+    main_page = MainPage(browser)
+    auth_page = AuthPage(browser)
 
-    @allure.story('1.Регистрация. Переход к форме заполнения данных нового аккаунта')
-    @allure.title('Нажать кнопку "Создать аккаунт"')
-    def test_reg_form_check(self): #Нажать кнопку "Создать аккаунт"
-        self.main_page.open_main_page()
-        self.main_page.click_login_icon()
-        self.main_page.click_enter_registration()
-        self.auth_page.click_create_button()
+    main_page.open_main_page("https://yourwebsite.com")  # Замените на актуальный URL вашего сайта
+    main_page.click_login_icon()
+    main_page.click_enter_registration()
+    auth_page.click_create_button()
 
 '''
     @allure.story('1.Регистрация. Переход к форме заполнения данных нового аккаунта')
